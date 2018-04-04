@@ -1,3 +1,3 @@
 #National Vocational Hospitality Services
 
-    :Music:
+    :Musical_note:

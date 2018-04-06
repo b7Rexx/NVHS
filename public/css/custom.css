@@ -1,0 +1,49 @@
+/*CUSTOM CSS DOCUMENT*/
+
+* {
+    font-family: 'Noto Serif', serif;
+}
+
+/*Frontend Header*/
+.header {
+    font-size: 0.8em;
+    padding: 10px;
+    background: wheat;
+}
+
+.header > i, a {
+    color: #333e70;
+}
+
+/*Frontend Footer*/
+.footer {
+    padding: 20px 0 20px 0;
+    background: #333e70;
+    color: wheat;
+    font-size: 0.9em;
+    width: 100%;
+}
+
+.footer > a {
+    color: darkorange;
+}
+
+/*Frontend Navbar*/
+.navbar {
+    background: linear-gradient(#1f1f3e, #24335d);
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}
+
+.navbar > div > a > img {
+    height: 60px;
+}
+
+.navbar > a, li > a {
+    color: white;
+}
+
+.body {
+    background: linear-gradient(#24335d, #333e70);
+}

@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Frontend Routes
+Route::get('/', 'Frontend@index')->name('home');
+Route::get('/home', 'Frontend@index');
+Route::get('/Events', 'Frontend@Event')->name('event');
+Route::get('/Gallery', 'Frontend@Gallery')->name('gallery');

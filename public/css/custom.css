@@ -36,6 +36,12 @@
     width: 100%;
 }
 
+@media (min-width: 978px) {
+    #stickyheader {
+        z-index: 2;
+    }
+}
+
 .navbar > div > a > img {
     height: 60px;
 }

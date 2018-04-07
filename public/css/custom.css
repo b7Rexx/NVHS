@@ -50,6 +50,37 @@
     color: white;
 }
 
+/*Homepage Body section*/
 .body {
     background: linear-gradient(#24335d, #333e70);
 }
+
+/*Gallerypage Body section*/
+.gallery {
+    background: linear-gradient(#24335d, #333e70);
+}
+
+.gallery_block {
+    display: block;
+    background: linear-gradient(#24335d, #333e70);
+    border: 2px outset grey;
+    margin: 10px;
+    padding: 5px;
+    min-width: 260px;
+}
+
+.gallery_block h3 {
+    color: midnightblue;
+}
+
+.gallery_block p {
+    color: grey;
+}
+
+.gallery_block > img {
+    height: 240px;
+    width: 240px;
+    margin-left: 10px;
+    border-radius: 25px;
+}
+

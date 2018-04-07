@@ -38,17 +38,28 @@
 
 @media (min-width: 978px) {
     #stickyheader {
+        height: 50px;
+        transition-duration: 0.5s;
         z-index: 2;
     }
 }
 
 .navbar > div > a > img {
-    height: 60px;
+    height: 40px;
 }
 
 .navbar > a, li > a {
     color: white;
 }
+
+#search{
+    background:transparent;
+    display:none;
+    width:350px;
+    float:left;
+}
+
+
 
 /*Homepage Body section*/
 .body {

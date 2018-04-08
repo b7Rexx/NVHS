@@ -3,6 +3,7 @@ $(function () {
     // Check the initial Poistion of the Sticky Header
     var stickyHeaderTop = $('#stickyheader').offset().top;
     var checkWidth = $(window).width();
+    console.log(checkWidth);
     $(window).scroll(function () {
         if ($(window).scrollTop() > stickyHeaderTop && checkWidth > 977) {
             $('#stickyheader').css({position: 'fixed', top: '0px', background: '#25499f'});
@@ -28,18 +29,3 @@ function playRim() {
     rimShotAudio.play();
 }
 
-item.addEventListener('mouseover', rimShotAudio.playRim, false);
-
-
-//Search bar animation
-var search2 = new Vue({
-    el: '#search-2',
-    data: {
-        name: 'search'
-    },
-    methods: {
-        form: function (event) {
-            console.log('okokokok')
-        }
-    }
-})

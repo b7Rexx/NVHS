@@ -1,4 +1,6 @@
 <nav class="navbar navbar-expand-lg" id="stickyheader" xmlns:v-on="http://www.w3.org/1999/xhtml"
+     xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
+     xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
      xmlns:v-on="http://www.w3.org/1999/xhtml">
     <div class="container">
 
@@ -26,7 +28,7 @@
             {{--<div id="searchDiv">--}}
                 <form class="form-inline my-2 my-lg-0">
                     {{csrf_field()}}
-                    <button v-on:click="searchForm"><i class="fa fa-search" id="searchToggle"></i></button>
+                    <i class="fa fa-search pr-3" id="searchToggle"></i>
                     <input class="form-control" id="search" type="search" placeholder="Type keywords and hit enter"
                            name="keyword">
                     {{--<input type="submit" hidden>--}}
@@ -41,8 +43,3 @@
         </nav>
     </div>
 </nav>
-<div id="search-2">
-
-<button v-on:click="form"> ok </button>
-</div>
-

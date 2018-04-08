@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+
     <link rel="shortcut icon" type="image/png" href="{{URL::to('image/icon.png')}}">
     <title>@yield('title','NVHS - Nepal Vocational Hospitality Services')</title>
 

@@ -7,7 +7,7 @@
 /*Frontend Header*/
 .header {
     font-size: 0.8em;
-    padding: 10px;
+    padding: 5px 0 0 0;
     background: wheat;
 }
 
@@ -17,11 +17,14 @@
 
 /*Frontend Footer*/
 .footer {
-    padding: 20px 0 20px 0;
-    background: #333e70;
+    background: #191426;
     color: wheat;
     font-size: 0.9em;
     width: 100%;
+}
+
+.links {
+    background: #211b31;
 }
 
 .footer > a {
@@ -40,7 +43,7 @@
     #stickyheader {
         height: 50px;
         transition-duration: 0.5s;
-        z-index: 2;
+        z-index: 1;
     }
 }
 
@@ -52,18 +55,37 @@
     color: white;
 }
 
-#search{
-    background:transparent;
-    display:none;
-    width:350px;
-    float:left;
+.carousel-item > img {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
 
+@media (min-width: 755px ) {
+    .carousel-item > img {
+        border-top-left-radius: 120px;
+        border-top-right-radius: 120px;
+    }
+}
 
+#search {
+    background: transparent;
+    /*display: none;*/
+    width: 350px;
+    float: left;
+}
 
 /*Homepage Body section*/
-.body {
-    background: linear-gradient(#24335d, #333e70);
+.top-body {
+    background: linear-gradient(#24335d, #4194df);
+    color: wheat;
+}
+
+h {
+    font-size: 50px;
+}
+
+.mid-body{
+    background: url("../image/mid_body_background.jpg");
 }
 
 /*Gallerypage Body section*/

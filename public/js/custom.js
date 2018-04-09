@@ -29,3 +29,65 @@ function playRim() {
     rimShotAudio.play();
 }
 
+//Navbar search toggle
+$('#searchToggle').click(function () {
+    $('#search').slideToggle(500);
+});
+
+//Homepage gallery image tittle fade in out
+$('#fadeContent' + 0).hover(function () {
+    $('#fadeImage' + 0).css({opacity: '0.1'});
+    $('#fadeTitle' + 0).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 0).css({opacity: '1'});
+    $('#fadeTitle' + 0).fadeOut(200);
+});
+$('#fadeContent' + 1).hover(function () {
+    $('#fadeImage' + 1).css({opacity: '0.1'});
+    $('#fadeTitle' + 1).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 1).css({opacity: '1'});
+    $('#fadeTitle' + 1).fadeOut(200);
+});
+$('#fadeContent' + 2).hover(function () {
+    $('#fadeImage' + 2).css({opacity: '0.1'});
+    $('#fadeTitle' + 2).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 2).css({opacity: '1'});
+    $('#fadeTitle' + 2).fadeOut(200);
+});
+$('#fadeContent' + 3).hover(function () {
+    $('#fadeImage' + 3).css({opacity: '0.1'});
+    $('#fadeTitle' + 3).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 3).css({opacity: '1'});
+    $('#fadeTitle' + 3).fadeOut(200);
+});
+$('#fadeContent' + 4).hover(function () {
+    $('#fadeImage' + 4).css({opacity: '0.1'});
+    $('#fadeTitle' + 4).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 4).css({opacity: '1'});
+    $('#fadeTitle' + 4).fadeOut(200);
+});
+$('#fadeContent' + 5).hover(function () {
+    $('#fadeImage' + 5).css({opacity: '0.1'});
+    $('#fadeTitle' + 5).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 5).css({opacity: '1'});
+    $('#fadeTitle' + 5).fadeOut(200);
+});
+$('#fadeContent' + 6).hover(function () {
+    $('#fadeImage' + 6).css({opacity: '0.1'});
+    $('#fadeTitle' + 6).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 6).css({opacity: '1'});
+    $('#fadeTitle' + 6).fadeOut(200);
+});
+$('#fadeContent' + 7).hover(function () {
+    $('#fadeImage' + 7).css({opacity: '0.1'});
+    $('#fadeTitle' + 7).fadeIn(500);
+}, function () {
+    $('#fadeImage' + 7).css({opacity: '1'});
+    $('#fadeTitle' + 7).fadeOut(200);
+});

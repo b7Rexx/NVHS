@@ -27,11 +27,9 @@
             </ul>
             {{--<div id="searchDiv">--}}
                 <form class="form-inline my-2 my-lg-0">
-                    {{csrf_field()}}
-                    <i class="fa fa-search pr-3" id="searchToggle"></i>
                     <input class="form-control" id="search" type="search" placeholder="Type keywords and hit enter"
                            name="keyword">
-                    {{--<input type="submit" hidden>--}}
+                    &nbsp;<i class="fa fa-search pr-3" id="searchToggle" contenteditable="false"> Search</i>
                 </form>
             </div>
         {{--</div>--}}

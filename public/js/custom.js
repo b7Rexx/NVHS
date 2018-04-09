@@ -9,7 +9,7 @@ $(function () {
             $('#stickyheader').css({position: 'fixed', top: '0px', background: '#25499f'});
         } else {
             $('#stickyheader').css({
-                position: 'static', top: '0px', background: 'linear-gradient(#1f1f3e, #24335d)'
+                position: 'static', top: '0px', background: 'linear-gradient(#1f1f3e, #2b4375)'
             });
         }
     });

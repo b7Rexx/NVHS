@@ -4,6 +4,10 @@
     font-family: 'Noto Serif', serif;
 }
 
+body {
+    background: white;
+}
+
 /*Frontend Header*/
 .header {
     font-size: 0.8em;
@@ -18,7 +22,7 @@
 /*Frontend Footer*/
 .footer {
     background: #191426;
-    color: wheat;
+    color: white;
     font-size: 0.9em;
     width: 100%;
 }
@@ -33,7 +37,7 @@
 
 /*Frontend Navbar*/
 .navbar {
-    background: linear-gradient(#1f1f3e, #24335d);
+    background: linear-gradient(#1f1f3e, #2b4375);
     color: white;
     font-weight: bold;
     width: 100%;
@@ -48,10 +52,11 @@
 }
 
 .navbar > div > a > img {
-    height: 40px;
+    height: 50px;
 }
 
-.navbar > a, li > a {
+.navbar a {
+    font-size: 1.2em;
     color: white;
 }
 
@@ -76,8 +81,8 @@
 
 /*Homepage Body section*/
 .top-body {
-    background: linear-gradient(#24335d, #4194df);
-    color: wheat;
+    background: linear-gradient(#2b4375, #4194df);
+    color: white;
 }
 
 h {
@@ -89,6 +94,21 @@ h {
     -moz-transition: transform 2s ease;
     -o-transition: transform 2s ease;
     transition: transform 2s ease;
+}
+
+.wave1, .wave2 {
+    z-index: -1;
+    height: 10px;
+}
+
+.wave1 > svg > path {
+    stroke: none;
+    fill: url(#MyGradient1);
+}
+
+.wave2 > svg > path {
+    stroke: none;
+    fill: url(#MyGradient2);
 }
 
 .mid-body {

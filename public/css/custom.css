@@ -84,6 +84,13 @@ h {
     font-size: 50px;
 }
 
+.carousel-item {
+    -webkit-transition: transform 2s ease;
+    -moz-transition: transform 2s ease;
+    -o-transition: transform 2s ease;
+    transition: transform 2s ease;
+}
+
 .mid-body {
     background: url("../image/mid_body_background1.jpg");
 }
@@ -93,7 +100,7 @@ h {
     position: absolute;
     z-index: 1;
     top: 0;
-    color:navajowhite;
+    color: navajowhite;
     padding: 20px;
 }
 

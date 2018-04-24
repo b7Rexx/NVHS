@@ -11,7 +11,7 @@
         </audio>
 
         <a class="navbar-brand" id="animateIcon" href="{{route('home')}}"><img src="{{URL::to('image/icon.png')}}"
-                                                                               alt="icon"></a>
+                                                                               alt="icon"> N V H S &nbsp;&nbsp;&nbsp;&nbsp;</a>
 
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

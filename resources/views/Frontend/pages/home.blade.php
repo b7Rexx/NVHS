@@ -45,24 +45,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="wave1">
-            <svg viewBox="0 0 500 200" preserveAspectRatio="xMinYMin meet">
-                <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"></path>
-                <defs>
-                    <linearGradient id="MyGradient1">
-                        <stop offset="20%" stop-color="#4295df"></stop>
-                        <stop offset="95%" stop-color="#fff"></stop>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <div class="container">
             <div class="row p-5">
                 @for($i = 0; $i<6;$i++)
                     <div class="col-md-4 col-sm-4">
-                        <div data-aos="fade-left" data-aos-duration="2500">
+                        <div data-aos="fade-left"  data-aos-duration="2500">
                             <h1>TITLE</h1>
                             <p class="text-justify">{{str_limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid assumenda deleniti
                         eligendi ex exercitationem expedita fugit, hic ipsum iste itaque nobis non quidem quo quod
@@ -74,42 +60,30 @@
                 @endfor
             </div>
         </div>
-    </div>
-    <div class="mid-body">
-        <div class="wave2">
-            <svg viewBox="0 0 500 200" preserveAspectRatio="xMinYMin meet">
-                <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"></path>
-                <defs>
-                    <linearGradient id="MyGradient2">
-                        <stop offset="20%" stop-color="#140d14"></stop>
-                        <stop offset="75%" stop-color="#010042"></stop>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-        <div class="container">
-            <div class="text-center p-4">
-                <button type="button" class="btn btn-secondary" onclick="javascript:window.location.href='Gallery'">
-                    <i class="fa fa-camera-retro fa-lg"></i> Gallery
-                </button>
-            </div>
-            <div class="row pb-3">
-                @for($i = 0; $i<8;$i++)
-                    <div class="col-md-3 col-sm-3" data-aos="zoom-in-up" data-aos-duration="3000">
-                        <div id="fadeContent{{$i}}">
-                            <img class="p-3" id="fadeImage{{$i}}" src="{{URL::to('image/uploads/gallery/1.jpg')}}"
-                                 width="100%" alt="
-                                 no image">
-                            <div class="fadeTitle" id="fadeTitle{{$i}}">
-                                <h3>&nbsp;&nbsp;&nbsp;TITLE {{$i}}</h3>
-                                <p>{{str_limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+        <div class="mid-body">
+            <div class="container">
+                <div class="text-center p-4">
+                    <button type="button" class="btn btn-secondary" onclick="javascript:window.location.href='Gallery'">
+                        <i class="fa fa-camera-retro fa-lg"></i> Gallery
+                    </button>
+                </div>
+                <div class="row pb-3">
+                    @for($i = 0; $i<8;$i++)
+                        <div class="col-md-3 col-sm-3" data-aos="zoom-in-up" data-aos-duration="3000">
+                            <div id="fadeContent{{$i}}" >
+                                <img class="p-3" id="fadeImage{{$i}}" src="{{URL::to('image/blank.png')}}"
+                                     width="100%" alt="no image">
+                                <div class="fadeTitle" id="fadeTitle{{$i}}">
+                                    <h3>&nbsp;&nbsp;&nbsp;TITLE {{$i}}</h3>
+                                    <p>{{str_limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
                                     excepturi iure obcaecati possimus sunt suscipit velit veniam? Amet debitis eius enim
                                     itaque iusto quia quos reprehenderit, sequi tempora veritatis voluptatibus!',50)}} </p>
-                                <a href="#{{$i}}">see more...</a>
+                                    <a href="#{{$i}}">see more...</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endfor
+                    @endfor
+                </div>
             </div>
         </div>
     </div>

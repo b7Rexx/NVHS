@@ -17,3 +17,12 @@ Route::get('/home', 'Frontend@index');
 Route::get('/Events', 'Frontend@Event')->name('event');
 Route::get('/Gallery', 'Frontend@Gallery')->name('gallery');
 Route::post('/Search', 'Frontend@Search')->name('search');
+
+/**************Backend Routes**************/
+Route::group(['prefix' => '@admin@'], function () {
+    Route::get('/', 'Backend@index')->name('admin-dashboard');
+    Route::get('/add-event', 'Backend@addEvent')->name('add-event');
+    Route::post('/add-event', 'Backend@addEventAction');
+    Route::get('/add-image', 'Backend@addImage')->name('add-image');
+    Route::post('/add-image', 'Backend@addImageAction');
+});

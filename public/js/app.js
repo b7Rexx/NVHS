@@ -13854,7 +13854,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(37);
+module.exports = __webpack_require__(38);
 
 
 /***/ }),
@@ -13869,6 +13869,7 @@ module.exports = __webpack_require__(37);
  */
 
 __webpack_require__(13);
+__webpack_require__(37);
 //
 // window.Vue = require('vue');
 //
@@ -35878,6 +35879,12 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 37 */
+/***/ (function(module, exports) {
+
+$('#date-time-picker').datetimepicker();
+
+/***/ }),
+/* 38 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

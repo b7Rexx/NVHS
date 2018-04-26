@@ -25,10 +25,10 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
                 <ul class="nav side-menu">
-                    <li><a href="<?= url('@admin/dashboard') ?>"><i class="fa fa-laptop"></i> Dashboard</a></li>
+                    <li><a href="<?= url('@admin@') ?>"><i class="fa fa-laptop"></i> Dashboard</a></li>
                     <li><a><i class="fa fa-home"></i> Events <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="">View</a></li>
+                            <li><a href="#">View</a></li>
                             <li><a href="{{route('add-event')}}">Add</a></li>
                         </ul>
                     </li>
@@ -36,13 +36,13 @@
                         <ul class="nav child_menu">
                             <li><a><i class="fa fa-picture-o"></i> Image <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="">View</a></li>
+                                    <li><a href="#">View</a></li>
                                     <li><a href="{{route('add-image')}}">Add</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-youtube"></i> Video <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="">View</a></li>
+                                    <li><a href="#">View</a></li>
                                     <li><a href="{{route('add-event')}}">Add</a></li>
                                 </ul>
                             </li>
@@ -57,16 +57,16 @@
         <!-- /menu footer buttons -->
         <div class="sidebar-footer hidden-small">
             <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                <span class="fa fa-cog" aria-hidden="true"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                <span class="fa fa-desktop" aria-hidden="true"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                <span class="fa fa-lock" aria-hidden="true"></span>
             </a>
             <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                <span class="fa fa-sign-out" aria-hidden="true"></span>
             </a>
         </div>
         <!-- /menu footer buttons -->

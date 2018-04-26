@@ -14,7 +14,7 @@
                     {{csrf_field()}}
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="text" name="title" class="form-control has-feedback-left" id="inputSuccess2"
+                        <input type="text" name="title" class="form-control has-feedback-left"
                                placeholder="Event Title">
                         <span class="fa fa-newspaper-o form-control-feedback left" aria-hidden="true"></span>
 
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="text" name="location" class="form-control has-feedback-left" id="inputSuccess2"
+                        <input type="text" name="location" class="form-control has-feedback-left"
                                placeholder="Event location">
                         <span class="fa fa-map-marker form-control-feedback left" aria-hidden="true"></span>
 
@@ -40,9 +40,15 @@
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="text" class="form-control has-feedback-left" id="date-time-picker" name="starting_date"
-                               placeholder="Event Starting date">
+                        <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                             data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                            <input class="form-control has-feedback-left" name="starting_date" size="16" type="text"
+                                   value="" placeholder="Event Starting date" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                        </div>
                         <span class="fa fa-calendar  form-control-feedback left" aria-hidden="true"></span>
+                        <input type="hidden" id="dtp_input1" value=""/><br/>
+
 
                         @if($errors->has('starting_date'))
                             <div class="text-danger">
@@ -52,9 +58,14 @@
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="text" class="form-control has-feedback-left" id="date-time-picker1" name="ending_date"
-                               placeholder="Event ending date">
-                        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                        <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
+                             data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2">
+                            <input class="form-control has-feedback-left" name="ending_date" size="16" type="text"
+                                   value="" placeholder="Event ending date" readonly>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-th" style="display:none;"></span></span>
+                        </div>
+                        <span class="fa fa-calendar  form-control-feedback left" aria-hidden="true"></span>
+                        <input type="hidden" id="dtp_input2" value=""/><br/>
 
                         @if($errors->has('ending_date'))
                             <div class="text-danger">
@@ -62,7 +73,6 @@
                             </div>
                         @endif
                     </div>
-
 
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -75,7 +85,6 @@
                             </div>
                         @endif
                     </div>
-
 
 
                     <div class="clearfix"></div>

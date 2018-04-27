@@ -182,3 +182,8 @@ padding:20px;
     border-radius: 30px;
 }
 
+.search_block{
+    background: linear-gradient(#2b4375, #4194df);
+    color: white;
+    min-height: 500px;
+}

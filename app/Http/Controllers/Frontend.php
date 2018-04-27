@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 class Frontend extends Controller
 {
+    private $_data= [];
+
     private $_path = 'Frontend.pages.';
 
     //
@@ -26,7 +28,7 @@ class Frontend extends Controller
 
     public function Search(Request $request)
     {
-        $data = $request->keyword;
-        return view($this->_path . 'search', $data);
+        $this->_data = $request->keyword;
+        return view($this->_path . 'search', $this->_data);
     }
 }

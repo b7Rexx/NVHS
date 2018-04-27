@@ -40,8 +40,8 @@
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
-                             data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                        <div class="input-group date form_datetime"
+                             data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
                             <input class="form-control has-feedback-left" name="starting_date" size="16" type="text"
                                    value="" placeholder="Event Starting date" readonly>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
@@ -58,8 +58,8 @@
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <div class="input-group date form_datetime" data-date="1979-09-16T05:25:07Z"
-                             data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2">
+                        <div class="input-group date form_datetime"
+                             data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input2">
                             <input class="form-control has-feedback-left" name="ending_date" size="16" type="text"
                                    value="" placeholder="Event ending date" readonly>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th" style="display:none;"></span></span>

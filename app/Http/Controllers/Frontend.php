@@ -24,7 +24,7 @@ class Frontend extends Controller
     public function SlugEvent($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        return view($this->_path . 'slugEvent', $this->_data);
+        return view($this->_path . 'Slug/slugEvent', $this->_data);
     }
 
     public function Gallery()
@@ -35,7 +35,7 @@ class Frontend extends Controller
     public function SlugGallery($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        return view($this->_path . 'slugGallery', $this->_data);
+        return view($this->_path . 'Slug/slugGallery', $this->_data);
     }
 
     public function Search(Request $request)
@@ -47,5 +47,11 @@ class Frontend extends Controller
     public function Contact()
     {
         return view($this->_path.'contact');
+    }
+
+    public function Company($slug)
+    {
+        $this->_data['slugInfo'] = $slug;
+        return view($this->_path.'Company/company',$this->_data);
     }
 }

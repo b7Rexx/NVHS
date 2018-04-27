@@ -1,7 +1,4 @@
-<nav class="navbar navbar-expand-lg" id="stickyheader" xmlns:v-on="http://www.w3.org/1999/xhtml"
-     xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
-     xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml"
-     xmlns:v-on="http://www.w3.org/1999/xhtml">
+<nav class="navbar navbar-expand-lg" id="stickyheader">
     <div class="container">
 
         {{--icon audio animation--}}
@@ -19,20 +16,34 @@
                     <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="nav-link dropbtn">Company <i class="fa fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                            <a href="/Company/Food-Hygiene">Food Hygiene</a>
+                            <a href="/Company/Training">Training</a>
+                            <a href="/Company/Home-Stay">Home Stay</a>
+                            <a href="/Company/Restaurant-Management">Restaurant Management</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('event')}}">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('gallery')}}">Gallery</a>
+                    <a class=" nav-link" href="{{route('gallery')}}">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('contact')}}">Contact us</a>
                 </li>
             </ul>
             {{--<div id="searchDiv">--}}
-                <form class="form-inline my-2 my-lg-0" method="post" action="{{route('search')}}">
-                    {{csrf_field()}}
-                    <input class="form-control" id="search" type="search" placeholder="Type keywords and hit enter"
-                           name="keyword" autocomplete="off">
-                    &nbsp;<i class="fa fa-search pr-3" id="searchToggle" contenteditable="false"> Search</i>
-                </form>
-            </div>
+            <form class="form-inline my-2 my-lg-0" method="post" action="{{route('search')}}">
+                {{csrf_field()}}
+                <input class="form-control" id="search" type="search" placeholder="Type keywords and hit enter"
+                       name="keyword" autocomplete="off">
+                &nbsp;<i class="fa fa-search pr-3" id="searchToggle" contenteditable="false"> Search</i>
+            </form>
+        </div>
         {{--</div>--}}
         <nav class="navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"

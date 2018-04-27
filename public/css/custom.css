@@ -39,8 +39,12 @@ body {
 .navbar {
     background: linear-gradient(#1f1f3e, #2b4375);
     color: white;
-    font-weight: bold;
+    /*font-weight: bold;*/
     width: 100%;
+}
+
+.nav-item {
+    margin-right: 5px;
 }
 
 #stickyheader {
@@ -78,7 +82,7 @@ body {
 #search {
     background: transparent;
     display: none;
-    width: 350px;
+    width: 230px;
     float: left;
 }
 
@@ -192,4 +196,76 @@ h {
     background: linear-gradient(#2b4375, #4194df);
     color: white;
     min-height: 500px;
+}
+
+.company_block {
+    background: linear-gradient(#2b4375, #4194df);
+    color: white;
+    min-height: 500px;
+}
+
+.company_block img {
+    width: 100%;
+}
+
+.contact_block {
+    background: linear-gradient(#2b4375, #4194df);
+    color: white;
+    min-height: 500px;
+}
+
+.contact_block img {
+    width: 50%;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+    color: greenyellow;
+}
+
+.dropdown-content {
+    display: none;
+    /*position: absolute;*/
+    /*margin-top: 20px    ;*/
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+@media (min-width: 978px ) {
+    .dropdown-content {
+        margin-top: 90px;
+    }
+}
+
+.dropdown-content a {
+    float: none;
+    font-size: 0.9em;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }

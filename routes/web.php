@@ -19,6 +19,9 @@ Route::get('/Events/{slug}', 'Frontend@SlugEvent');
 Route::get('/Gallery', 'Frontend@Gallery')->name('gallery');
 Route::get('/Gallery/{slug}', 'Frontend@SlugGallery');
 Route::post('/Search', 'Frontend@Search')->name('search');
+Route::get('/Company/{slug}', 'Frontend@Company')->name('company');
+Route::get('/Contact', 'Frontend@Contact')->name('contact');
+
 
 /**************Backend Routes**************/
 Route::group(['prefix' => '@admin@'], function () {

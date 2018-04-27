@@ -92,3 +92,12 @@ $('#fadeContent' + 7).hover(function () {
     $('#fadeTitle' + 7).fadeOut(200);
 });
 
+
+//dropdown toggle
+$(document).ready(function () {
+    $(".dropdown").hover(function () {
+        $(".dropdown-content").fadeIn(100);
+    }, function () {
+        $(".dropdown-content").fadeOut(100);
+    });
+});

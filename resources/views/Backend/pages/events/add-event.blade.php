@@ -9,6 +9,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
+                @include('Backend.includes.message')
                 <form method="post" enctype="multipart/form-data" action="{{route('add-event')}}"
                       class="form-horizontal form-label-left input_mask">
                     {{csrf_field()}}
@@ -95,13 +96,18 @@
                             <label for="details" class="control-label">Event Details</label>
                             <textarea id="details" name="details" class="form-control" cols="30"></textarea>
                         </div>
+                        @if($errors->has('details'))
+                            <div class="text-danger">
+                                {{$errors->first('details')}}
+                            </div>
+                        @endif
                     </div>
                     <hr>
                     <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                             <button type="button" class="btn btn-primary">Cancel</button>
                             <button class="btn btn-primary" type="reset">Reset</button>
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success">Add Event</button>
                         </div>
                     </div>
                 </form>

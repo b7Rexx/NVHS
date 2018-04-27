@@ -24,8 +24,9 @@ class Frontend extends Controller
         return view($this->_path . 'gallery');
     }
 
-        public function Search(Request $keyword)
+    public function Search(Request $request)
     {
-        return view($this->_path . 'search', $keyword);
+        $data = $request->keyword;
+        return view($this->_path . 'search', $data);
     }
 }

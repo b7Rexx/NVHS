@@ -26,9 +26,9 @@
                 </li>
             </ul>
             {{--<div id="searchDiv">--}}
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0" method="post" action="{{route('search')}}">
                     <input class="form-control" id="search" type="search" placeholder="Type keywords and hit enter"
-                           name="keyword">
+                           name="keyword" autocomplete="off">
                     &nbsp;<i class="fa fa-search pr-3" id="searchToggle" contenteditable="false"> Search</i>
                 </form>
             </div>

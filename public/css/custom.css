@@ -43,7 +43,7 @@ body {
     width: 100%;
 }
 
-#stickyheader{
+#stickyheader {
     z-index: 2;
 }
 
@@ -141,8 +141,8 @@ h {
     min-width: 260px;
 }
 
-.gallery_block:hover{
-background: cadetblue;
+.gallery_block:hover {
+    background: cadetblue;
     border-radius: 10px;
 }
 
@@ -163,5 +163,22 @@ background: cadetblue;
     width: 240px;
     margin-left: 10px;
     border-radius: 25px;
+}
+
+.event_block {
+    background: linear-gradient(#2b4375, #4194df);
+    color: white;
+}
+
+.event img {
+    width: 200px;
+}
+.event{
+padding:20px;
+}
+
+.event:hover{
+    border:2px outset cadetblue;
+    border-radius: 30px;
 }
 

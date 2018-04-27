@@ -9,28 +9,28 @@
         <div class="container">
             <br>
             <h1 class="text-center">Event</h1>
-            @for($i=0;$i<5;$i++)
+            @foreach($events as $event)
                 <hr>
                 <div class="event">
+                    <h2 class="text-center">{{strtoupper($event->title)}}</h2>
+                    <br>
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="{{URL::to('image/uploads/gallery/1.jpg')}}" alt="photo">
+                            <img src="{{URL::to('image/uploads/events/'.$event->image)}}" alt="photo">
                         </div>
                         <div class="col-md-6">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, laborum libero nulla
-                                pariatur
-                                perferendis sunt velit vero! Ad commodi consequuntur dolorem esse inventore natus neque
-                                odit
-                                quisquam. Ducimus, porro repellendus.</p>
-                            <a href="/Events/slug-info-{{$i}}">See more ... </a>
+                            <p>{{htmlspecialchars_decode($event->details)}}</p>
+                            Location : {{$event->location}}<br>
+                            <a href="/Events/{{$event->id}}">See more ... </a>
                         </div>
                         <div class="col-md-3">
-                            {{date('Y/m/d')}}
+                            <t>Starts : </t>{{explode(' ',$event->starting_date)[0]}}<br><br>
+                            <t>End : </t>{{explode(' ',$event->ending_date)[0]}}
                         </div>
                     </div>
                 </div>
 
-            @endfor
+            @endforeach
         </div>
     </div>
 @endsection

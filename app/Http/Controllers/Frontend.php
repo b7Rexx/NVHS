@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\event;
 use Illuminate\Http\Request;
 
 class Frontend extends Controller
@@ -18,7 +19,8 @@ class Frontend extends Controller
 
     public function Event()
     {
-        return view($this->_path . 'event');
+        $this->_data['events'] = event::all()->sortByDesc('id');
+        return view($this->_path . 'event', $this->_data);
     }
 
     public function SlugEvent($slug)
@@ -46,12 +48,12 @@ class Frontend extends Controller
 
     public function Contact()
     {
-        return view($this->_path.'contact');
+        return view($this->_path . 'contact');
     }
 
     public function Company($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        return view($this->_path.'Company/company',$this->_data);
+        return view($this->_path . 'Company/company', $this->_data);
     }
 }

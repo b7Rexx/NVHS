@@ -30,6 +30,7 @@ class Backend extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'location'=>'required',
             'image' => 'required',
             'description' => 'required'
         ]);

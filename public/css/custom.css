@@ -168,21 +168,27 @@ h {
 .event_block {
     background: linear-gradient(#2b4375, #4194df);
     color: white;
+    min-height: 500px;
 }
 
 .event img {
     width: 200px;
 }
-.event{
-padding:20px;
+
+.event {
+    padding: 20px;
 }
 
-.event:hover{
-    border:2px outset cadetblue;
+.event a {
+    color: yellow;
+}
+
+.event:hover {
+    border: 2px outset cadetblue;
     border-radius: 30px;
 }
 
-.search_block{
+.search_block {
     background: linear-gradient(#2b4375, #4194df);
     color: white;
     min-height: 500px;

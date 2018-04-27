@@ -22,7 +22,7 @@
                                 perferendis sunt velit vero! Ad commodi consequuntur dolorem esse inventore natus neque
                                 odit
                                 quisquam. Ducimus, porro repellendus.</p>
-                            <a href="#">See more ... </a>
+                            <a href="/Events/slug-info-{{$i}}">See more ... </a>
                         </div>
                         <div class="col-md-3">
                             {{date('Y/m/d')}}

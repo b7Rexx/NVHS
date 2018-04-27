@@ -23,7 +23,7 @@
                                 nihil
                                 odio
                                 perspiciatis placeat quam quasi quod saepe.",100)}}</p>
-                            <a href="#">See more ...</a>
+                            <a href="/Gallery/slug-info-{{$i}}">See more ...</a>
                         </div>
                     </div>
                 @endfor

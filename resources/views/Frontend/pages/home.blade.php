@@ -85,17 +85,18 @@
             <div class="row pb-3">
                 @for($i = 0; $i<8;$i++)
                     <div class="col-md-3 col-sm-3" data-aos="zoom-in-up" data-aos-duration="3000">
-                        <div id="fadeContent{{$i}}">
-                            <img class="p-3" id="fadeImage{{$i}}" src="{{URL::to('image/blank.png')}}"
-                                 width="100%" alt="no image">
-                            <div class="fadeTitle" id="fadeTitle{{$i}}">
-                                <h3>&nbsp;&nbsp;&nbsp;TITLE {{$i}}</h3>
-                                <p>{{str_limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
+                        <a href="/Gallery/slug-info-{{$i}}">
+                            <div id="fadeContent{{$i}}">
+                                <img class="p-3" id="fadeImage{{$i}}" src="{{URL::to('image/blank.png')}}"
+                                     width="100%" alt="no image">
+                                <div class="fadeTitle" id="fadeTitle{{$i}}">
+                                    <h3>&nbsp;&nbsp;&nbsp;TITLE {{$i}}</h3>
+                                    <p>{{str_limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
                                     excepturi iure obcaecati possimus sunt suscipit velit veniam? Amet debitis eius enim
                                     itaque iusto quia quos reprehenderit, sequi tempora veritatis voluptatibus!',50)}} </p>
-                                <a href="#{{$i}}">see more...</a>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endfor
             </div>

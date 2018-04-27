@@ -43,7 +43,7 @@ class Backend extends Controller
         }
         $data['title']=$request->title;
         $data['description']=$request->description;
-        if (image::insert($data)) {
+        if (image::create($data)) {
             return redirect()->route('add-image')->with('success', 'Image uploaded successfully');
         }
         return redirect()->back()->with('fail', 'There was some problem');

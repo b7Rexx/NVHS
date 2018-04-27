@@ -91,3 +91,4 @@ $('#fadeContent' + 7).hover(function () {
     $('#fadeImage' + 7).css({opacity: '1'});
     $('#fadeTitle' + 7).fadeOut(200);
 });
+

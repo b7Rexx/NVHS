@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\event;
+use App\image;
+use App\video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Frontend extends Controller
 {
@@ -44,18 +47,31 @@ class Frontend extends Controller
     {
         $this->_data['keywords'] = $request->keyword;
         $this->_data['key_type'] = isset($request->key_type) ? $request->key_type : 'all';
+        $preAssignData = [];
 
-        //Search
-        $this->_data['search_array'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        if ($request->key_type == 'all') {
+            $preAssignData[0] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+            $preAssignData[1] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+            $preAssignData[2] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } elseif ($request->key_type == 'events') {
+            $preAssignData['search_array'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } elseif ($request->key_type == 'images') {
+            $preAssignData['search_array'] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } elseif ($request->key_type == 'videos') {
+            $preAssignData['search_array'] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        }
+        $this->_data['search_array'] = $preAssignData;
         return view($this->_path . 'search', $this->_data);
     }
 
-    public function Contact()
+    public
+    function Contact()
     {
         return view($this->_path . 'contact');
     }
 
-    public function Company($slug)
+    public
+    function Company($slug)
     {
         $this->_data['slugInfo'] = $slug;
         return view($this->_path . 'Company/company', $this->_data);

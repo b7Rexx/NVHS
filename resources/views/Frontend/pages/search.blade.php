@@ -26,20 +26,25 @@
             <h5 class="text-center">Showing result of {{$key_type}} related to "{{$keywords}}"</h5>
 
             <div>
-                @foreach($search_array as $list)
-                    <div class="row border">
-                        <h4 class="text-center">{{$list->title}}</h4>
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-6">
-                            <?php echo htmlspecialchars_decode($list->details)?>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#">See more ... </a>
-                        </div>
-                    </div>
-                @endforeach
+                @if(empty($search_array))
+                    No results found.
+                @else
+                    @foreach($search_array as $list1)
+                        @foreach($list1 as $list)
+                            <div class="row border">
+                                <div class="col-md-6">
+                                    <a href="#"><h2>{{$list->title}}</h2></a>
+                                    <?php echo str_limit(htmlspecialchars_decode($list->details), 100, '...')?>
+                                </div>
+                                <div class="col-md-3">
+                                    <a href="#">See more ... </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
+                @endif
             </div>
+
         </div>
     </div>
 

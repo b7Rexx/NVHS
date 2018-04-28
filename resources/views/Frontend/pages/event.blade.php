@@ -19,13 +19,13 @@
                             <img src="{{URL::to('image/uploads/events/'.$event->image)}}" alt="photo">
                         </div>
                         <div class="col-md-6">
-                            <p>{{htmlspecialchars_decode($event->details)}}</p>
+                            <p><?php echo htmlspecialchars_decode($event->details);?></p>
                             Location : {{$event->location}}<br>
                             <a href="/Events/{{$event->id}}">See more ... </a>
                         </div>
                         <div class="col-md-3">
-                            <t>Starts : </t>{{explode(' ',$event->starting_date)[0]}}<br><br>
-                            <t>End : </t>{{explode(' ',$event->ending_date)[0]}}
+                            <t>Starts :</t>{{explode(' ',$event->starting_date)[0]}}<br><br>
+                            <t>End :</t>{{explode(' ',$event->ending_date)[0]}}
                         </div>
                     </div>
                 </div>

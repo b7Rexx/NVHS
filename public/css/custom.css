@@ -104,6 +104,7 @@ h {
 }
 
 .wave1, .wave2 {
+    margin-top:-2px;
     z-index: -1;
     height: 10px;
 }
@@ -197,6 +198,15 @@ h {
     color: white;
     min-height: 500px;
 }
+.search_block{
+
+}
+
+.input-form{
+    width:200px;
+    background: transparent;
+    color:white;
+}
 
 .company_block {
     background: linear-gradient(#2b4375, #4194df);
@@ -263,7 +273,7 @@ h {
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: dodgerblue;
 }
 
 .dropdown:hover .dropdown-content {

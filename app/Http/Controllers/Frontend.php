@@ -43,6 +43,10 @@ class Frontend extends Controller
     public function Search(Request $request)
     {
         $this->_data['keywords'] = $request->keyword;
+        $this->_data['key_type'] = isset($request->key_type) ? $request->key_type : 'all';
+
+        //Search
+        $this->_data['search_array'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
         return view($this->_path . 'search', $this->_data);
     }
 

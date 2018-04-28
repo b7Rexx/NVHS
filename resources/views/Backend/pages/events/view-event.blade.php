@@ -34,12 +34,13 @@
                                 <td>{{$event->location}}</td>
                                 <td>{{$event->starting_date}}</td>
                                 <td>{{$event->ending_date}}</td>
-                                <td><img height="30" src="{{URL::to('uploads/events/'.$event->image)}}" alt=""></td>
-                                <td>{{htmlspecialchars_decode($event->details)}}</td>
+                                <td><img height="30" src="{{URL::to('image/uploads/events/'.$event->image)}}" alt=""></td>
+                                {{$event->details=htmlspecialchars_decode($event->details)}}
+                                <td>{{$event->details}}</td>
                                 <td>
                                     <a href=""
                                        class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
-                                    <a href=""
+                                    <a href="{{route('delete-event',['id'=>$event->id])}}"
                                        class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

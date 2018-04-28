@@ -21,10 +21,25 @@
                     <option value="events">Events</option>
                 </select>
             </form>
-            <br><hr>
+            <br>
+            <hr>
             <h5 class="text-center">Showing result of {{$key_type}} related to "{{$keywords}}"</h5>
 
-            {{$search_array}}
+            <div>
+                @foreach($search_array as $list)
+                    <div class="row border">
+                        <h4 class="text-center">{{$list->title}}</h4>
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6">
+                            <?php echo htmlspecialchars_decode($list->details)?>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#">See more ... </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 

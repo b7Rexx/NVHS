@@ -28,6 +28,8 @@ Route::group(['prefix' => '@admin@'], function () {
     Route::get('/', 'Backend@index')->name('admin-dashboard');
     Route::get('/add-event', 'Backend@addEvent')->name('add-event');
     Route::post('/add-event', 'Backend@addEventAction');
+    Route::get('/view-event', 'Backend@viewEvent')->name('view-event');
+    Route::get('/delete-event/{id}','Backend@deleteEvent')->name('delete-event');
     Route::get('/add-image', 'Backend@addImage')->name('add-image');
     Route::post('/add-image', 'Backend@addImageAction');
 });

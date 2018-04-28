@@ -47,6 +47,22 @@ class Backend extends Controller
         }
         return redirect()->back()->with('fail', 'Problem encounter while adding event');
     }
+    public function viewEvent(){
+        $this->_data['events'] = event::all();
+        return view($this->_path . 'events.view-event', $this->_data);
+    }
+    public function deleteEvent($id){
+        $id = (int)$id;
+        $event = event::findOrFail($id);
+        if (event::where(['id' => $id])->delete()) {
+            $image = $event->image;
+            if (file_exists(public_path('imageuploads/events/' . $image))) {
+                unlink(public_path('imageuploads/events/' . $image));
+            }
+        }
+        return redirect()->back()->with('success', 'Event was deleted ');
+
+    }
     public function addImage()
     {
         return view($this->_path . 'images.add-image');

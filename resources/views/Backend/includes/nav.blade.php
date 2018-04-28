@@ -28,7 +28,7 @@
                     <li><a href="<?= url('@admin@') ?>"><i class="fa fa-laptop"></i> Dashboard</a></li>
                     <li><a><i class="fa fa-home"></i> Events <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="#">View</a></li>
+                            <li><a href="{{route('view-event')}}">View</a></li>
                             <li><a href="{{route('add-event')}}">Add</a></li>
                         </ul>
                     </li>

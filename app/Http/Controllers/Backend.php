@@ -47,6 +47,10 @@ class Backend extends Controller
         }
         return redirect()->back()->with('fail', 'Problem encounter while adding event');
     }
+    public function viewEvent(){
+        $this->_data['events'] = event::all();
+        return view($this->_path . 'events.view-event', $this->_data);
+    }
     public function addImage()
     {
         return view($this->_path . 'images.add-image');

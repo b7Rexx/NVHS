@@ -1,7 +1,7 @@
 @extends('Frontend.master')
 
 @section('title')
-    NVHS - Event
+    NVHS - Image Detail
 @endsection
 
 @section('body')
@@ -10,10 +10,10 @@
             <br>
             <h1 class="text-center">Event</h1>
             <div class="event">
-            {{$slugInfo}}
-                <div class="row">
+                {{$slugInfo}}
+                    <div class="row">
                     <div class="col-md-3">
-                        <img src="{{URL::to('image/uploads/gallery/1.jpg')}}" alt="photo">
+                        <img src="{{URL::to('image/uploads/events/'.$detail[0]->image)}}" alt="photo">
                     </div>
                     <div class="col-md-6">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, laborum libero nulla

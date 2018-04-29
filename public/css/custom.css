@@ -199,6 +199,10 @@ h {
     min-height: 500px;
 }
 
+.search_block a:hover{
+    color :white;
+}
+
 .input-form{
     width:200px;
     background: transparent;

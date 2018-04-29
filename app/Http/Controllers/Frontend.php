@@ -26,52 +26,63 @@ class Frontend extends Controller
         return view($this->_path . 'event', $this->_data);
     }
 
-    public function SlugEvent($slug)
+    public function DetailEvent($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        return view($this->_path . 'Slug/slugEvent', $this->_data);
+        $this->_data['detail'] = event::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        return view($this->_path . 'Detail/Event', $this->_data);
     }
+
+    public function DetailImage($slug)
+    {
+        $this->_data['slugInfo'] = $slug;
+        $this->_data['detail'] = image::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        return view($this->_path . 'Detail/Image', $this->_data);
+    }
+
+    public function DetailVideo($slug)
+    {
+        $this->_data['slugInfo'] = $slug;
+        $this->_data['detail'] = video::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        return view($this->_path . 'Detail/Video', $this->_data);
+    }
+
 
     public function Gallery()
     {
         return view($this->_path . 'gallery');
     }
 
-    public function SlugGallery($slug)
-    {
-        $this->_data['slugInfo'] = $slug;
-        return view($this->_path . 'Slug/slugGallery', $this->_data);
-    }
-
     public function Search(Request $request)
     {
         $this->_data['keywords'] = $request->keyword;
-        $this->_data['key_type'] = isset($request->key_type) ? $request->key_type : 'all';
-        $preAssignData = [];
+        $this->_data['key_type'] = isset($request->key_type) ? $request->key_type : 'Show All';
+        $this->_data['all'] = false;
+        if ($request->key_type == 'Events') {
+            $this->_data['Event'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } elseif ($request->key_type == 'Images') {
+            $this->_data['Image'] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } elseif ($request->key_type == 'Videos') {
+            $this->_data['Video'] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } else {
+            $this->_data['all'] = true;
 
-        if ($request->key_type == 'all') {
-            $preAssignData[0] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
-            $preAssignData[1] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
-            $preAssignData[2] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
-        } elseif ($request->key_type == 'events') {
-            $preAssignData['search_array'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
-        } elseif ($request->key_type == 'images') {
-            $preAssignData['search_array'] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
-        } elseif ($request->key_type == 'videos') {
-            $preAssignData['search_array'] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+            $this->_data['Event'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+
+            $this->_data['Image'] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+
+            $this->_data['Video'] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+
         }
-        $this->_data['search_array'] = $preAssignData;
         return view($this->_path . 'search', $this->_data);
     }
 
-    public
-    function Contact()
+    public function Contact()
     {
         return view($this->_path . 'contact');
     }
 
-    public
-    function Company($slug)
+    public function Company($slug)
     {
         $this->_data['slugInfo'] = $slug;
         return view($this->_path . 'Company/company', $this->_data);

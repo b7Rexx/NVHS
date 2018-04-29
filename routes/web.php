@@ -15,9 +15,10 @@
 Route::get('/', 'Frontend@index')->name('home');
 Route::get('/home', 'Frontend@index');
 Route::get('/Events', 'Frontend@Event')->name('event');
-Route::get('/Events/{slug}', 'Frontend@SlugEvent');
+Route::get('/Details/Event/{slug}', 'Frontend@DetailEvent');
+Route::get('/Details/Image/{slug}', 'Frontend@DetailImage');
+Route::get('/Details/Video/{slug}', 'Frontend@DetailVideo');
 Route::get('/Gallery', 'Frontend@Gallery')->name('gallery');
-Route::get('/Gallery/{slug}', 'Frontend@SlugGallery');
 Route::post('/Search', 'Frontend@Search')->name('search');
 Route::get('/Company/{slug}', 'Frontend@Company')->name('company');
 Route::get('/Contact', 'Frontend@Contact')->name('contact');

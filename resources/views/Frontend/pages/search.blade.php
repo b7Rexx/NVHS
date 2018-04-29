@@ -15,36 +15,88 @@
                        autocomplete="off">
                 <button type="submit" class="btn btn-primary btn-sm float-right m-1"> Go!</button>
                 <select class="input-form form-control float-right" name="key_type">
-                    <option value="all">Show All</option>
-                    <option value="images">Images</option>
-                    <option value="videos">Videos</option>
-                    <option value="events">Events</option>
+                    <option style="display: none">{{$key_type}}</option>
+                    <option value="Show All">Show All</option>
+                    <option value="Images">Images</option>
+                    <option value="Videos">Videos</option>
+                    <option value="Events">Events</option>
                 </select>
             </form>
             <br>
             <hr>
-            <h5 class="text-center">Showing result of {{$key_type}} related to "{{$keywords}}"</h5>
 
             <div>
-                @if(empty($search_array))
-                    No results found.
-                @else
-                    @foreach($search_array as $list1)
-                        @foreach($list1 as $list)
-                            <div class="row border">
-                                <div class="col-md-6">
-                                    <a href="#"><h2>{{$list->title}}</h2></a>
-                                    <?php echo str_limit(htmlspecialchars_decode($list->details), 100, '...')?>
-                                </div>
-                                <div class="col-md-3">
-                                    <a href="#">See more ... </a>
-                                </div>
-                            </div>
+                @if(!$all)
+                    @if(!empty($Event))
+                        <h4>Events</h4>
+                        @foreach($Event as $list1)
+                            <a href="Details/Event/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
+                            <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
+                            <br>
                         @endforeach
-                    @endforeach
+                    @elseif(!empty($Image))-
+                        <h4>Images</h4>
+                        @foreach($Image as $list1)
+                            <a href="Details/Image/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
+                            <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
+                            <br>
+                        @endforeach
+                    @elseif(!empty($Video))
+                        <h4>Videos</h4>
+                        @foreach($Video as $list1)
+                            <a href="Details/Video/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
+                            <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
+                            <br>
+                        @endforeach
+                    @else
+                        <div>
+                            No related posts.
+                        </div>
+                    @endif
+                @else
+                    <br>
+                    <h4>Events</h4>
+                    <hr>
+                    @forelse($Event as $list1)
+                        <a href="Details/Event/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
+                        <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...');?>
+                        <br>
+                    @empty
+                        <div>
+                            No related events.
+                        </div>
+                        <br>
+                    @endforelse
+                    <br>
+                    <h4>Images</h4>
+                    <hr>
+                    @forelse($Image as $list2)
+                        <hr>
+                        <a href="Details/Image/{{$list2->id}}"><h2>{{$list2->title}}</h2></a>
+                        <?php echo str_limit(htmlspecialchars_decode($list2->details), 150, '...')?>
+                        <br>
+                    @empty
+                        <div>No related images.</div>
+                        <br>
+                    @endforelse
+                    <br>
+                    <h4>Videos</h4>
+                    <hr>
+                    @forelse($Video as $list3)
+                        <a href="Details/Video/{{$list3->id}}"><h2>{{$list3->title}}</h2></a>
+                        <?php echo str_limit(htmlspecialchars_decode($list3->details), 150, '...');?>
+                        <br>
+                    @empty
+                        <div>
+                            No related videos.
+                        </div>
+                        <br>
+                    @endforelse
                 @endif
             </div>
+            <div class="row" style="min-height:100px">
 
+            </div>
         </div>
     </div>
 

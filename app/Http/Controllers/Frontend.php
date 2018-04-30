@@ -47,10 +47,22 @@ class Frontend extends Controller
         return view($this->_path . 'Detail/Video', $this->_data);
     }
 
-
-    public function Gallery()
+    public function Gallery($type)
     {
-        return view($this->_path . 'gallery');
+        $this->_data['GalleryType'] = $type;
+        if ($type == 'Image') {
+            $this->_data['images'] = image::all()->sortByDesc('id');
+        } elseif ($type == 'Video') {
+            $this->_data['videos'] = video::all()->sortByDesc('id');
+        }
+        return view($this->_path . 'gallery',$this->_data);
+    }
+
+    public function DetailGallery($slug)
+    {
+        $this->_data['slugInfo'] = $slug;
+
+        return view($this->_path . 'Detail/Gallery', $this->_data);
     }
 
     public function Search(Request $request)

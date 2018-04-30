@@ -22,7 +22,7 @@ body {
 /*Frontend Footer*/
 .footer {
     background: #191426;
-    color: white;
+    color: lightskyblue;
     font-size: 0.9em;
     width: 100%;
 }
@@ -31,7 +31,8 @@ body {
     background: #211b31;
 }
 
-.footer > a {
+.footer  a {
+    font-size: 1.1em;
     color: darkorange;
 }
 
@@ -104,7 +105,7 @@ h {
 }
 
 .wave1, .wave2 {
-    margin-top:-2px;
+    margin-top: -2px;
     z-index: -1;
     height: 10px;
 }
@@ -147,7 +148,7 @@ h {
 }
 
 .gallery_block:hover {
-    background: cadetblue;
+    background: linear-gradient(white, grey);
     border-radius: 10px;
 }
 
@@ -199,14 +200,14 @@ h {
     min-height: 500px;
 }
 
-.search_block a:hover{
-    color :white;
+.search_block a:hover {
+    color: white;
 }
 
-.input-form{
-    width:200px;
+.input-form {
+    width: 200px;
     background: transparent;
-    color:white;
+    color: white;
 }
 
 .company_block {
@@ -280,3 +281,30 @@ h {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.G_active, .tabs > li {
+    margin-left: 20%;
+    width: 20%;
+}
+
+.tabs > li > a > i:hover {
+    background: floralwhite;
+    border-radius: 20px;
+}
+
+.tabs > li > a > i {
+    background: bisque;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.G_active > li > a > i {
+    background: floralwhite;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.G_active > li > a > i > strong {
+    font-size: 0.5em;
+}
+

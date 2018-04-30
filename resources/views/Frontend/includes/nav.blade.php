@@ -30,7 +30,7 @@
                     <a class="nav-link" href="{{route('event')}}">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link" href="{{route('gallery')}}">Gallery</a>
+                    <a class=" nav-link" href="/Gallery/Image">Gallery</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('contact')}}">Contact us</a>

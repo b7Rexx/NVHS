@@ -118,6 +118,10 @@
     </div>
 </div>
 @endsection
+
+@section('title')
+    Add Events
+@endsection
 @section('my-script')
 
 

@@ -26,6 +26,15 @@
                         <t>End :</t>{{explode(' ',$detail[0]->ending_date)[0]}}
                     </div>
                 </div>
+                <br><br>
+                <div class="row">
+                    @for($i=0;$i<6;$i++)
+                        <div class="col-lg-3 col-md-4 col-sm-6 fade-event" style="position: relative">
+                            <img src="{{URL::to('image/blank.png')}}" alt="photos">
+                            <i class="text-center">TITLE {{$i}}</i>
+                        </div>
+                    @endfor
+                </div>
             @else
                 <h5>No event found.</h5>
                 <h5>Go to <a href="/Gallery/Event" style="color: whitesmoke">events</a> to view list</h5>

@@ -14,19 +14,19 @@
             <ul class="nav tabs">
                 @if($GalleryType == 'Image')
                     <div class="G_active">
-                        <li><a title="Images" href="/Gallery/Image/"><i class="fa fa-image fa-3x"> <strong>
+                        <li><a title="Images" href="/Gallery/Image/"><i class="fa fa-image fa-2x"> <strong>
                                         Images</strong></i></a></li>
                     </div>
                 @else
-                    <li><a title="Images" href="/Gallery/Image/"><i class="fa fa-image fa-3x"></i></a></li>
+                    <li><a title="Images" href="/Gallery/Image/"><i class="fa fa-image fa-2x"></i></a></li>
                 @endif
                 @if($GalleryType == 'Video')
                     <div class="G_active">
-                        <li><a title="Videos" href="/Gallery/Video"><i class="fa fa-video-camera fa-3x"> <strong>
+                        <li><a title="Videos" href="/Gallery/Video"><i class="fa fa-video-camera fa-2x"> <strong>
                                         Videos</strong></i></a></li>
                     </div>
                 @else
-                    <li><a title="Videos" href="/Gallery/Video"><i class="fa fa-video-camera fa-3x"></i></a></li>
+                    <li><a title="Videos" href="/Gallery/Video"><i class="fa fa-video-camera fa-2x"></i></a></li>
                 @endif
             </ul>
             <br><br>
@@ -38,8 +38,8 @@
                                  data-aos="fade-left" data-aos-duration="1500">
                                 <a href="/Details/Image/{{$image->id}}"><h3>{{str_limit($image->title,15)}}</h3></a>
                                 <br><br>
-                                <p class="text-justify"><?php echo str_limit(htmlspecialchars_decode($image->details), 50, '...')?></p>
-                                <a href="/Details/Video/{{$image->id}}">Details... </a>
+                                <a href="/Details/Video/{{$image->id}}"><?php echo str_limit(htmlspecialchars_decode($image->details), 100)?></p>
+                                    <br>...Details... </a>
                             </div>
                         </div>
                     @empty
@@ -56,7 +56,6 @@
                                         frameborder="0"
                                         allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 <br><br>
-                                <p class="text-justify"><?php echo str_limit(htmlspecialchars_decode($video->details), 50, '...')?></p>
                                 <a href="/Details/Video/{{$video->id}}">Details... </a>
                             </div>
                         </div>

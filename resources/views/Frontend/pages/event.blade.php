@@ -8,29 +8,26 @@
     <div class="event_block">
         <div class="container">
             <br>
-            <h1 class="text-center">Event</h1>
-            @foreach($events as $event)
-                <hr>
-                <div class="event">
-                    <h2 class="text-center">{{strtoupper($event->title)}}</h2>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3">
+            <h1 class="text-center">Events</h1>
+            <hr>
+            <div class="row">
+                @forelse($events as $event)
+                    <div class="col-md-6">
+                        <a href="/Details/Event/{{$event->id}}"><h4>{{strtoupper($event->title)}}</h4></a>
+                        <br>
+                        <a href="/Details/Event/{{$event->id}}">
                             <img src="{{URL::to('image/uploads/events/'.$event->image)}}" alt="photo">
-                        </div>
-                        <div class="col-md-6">
-                            <p><?php echo htmlspecialchars_decode($event->details);?></p>
-                            Location : {{$event->location}}<br>
-                            <a href="/Details/Event/{{$event->id}}">See more ... </a>
-                        </div>
-                        <div class="col-md-3">
-                            <t>Starts :</t>{{explode(' ',$event->starting_date)[0]}}<br><br>
-                            <t>End :</t>{{explode(' ',$event->ending_date)[0]}}
-                        </div>
+                        </a>
+                        <p><?php echo str_limit(htmlspecialchars_decode($event->details), 120, '...');?></p>
+                        Location : {{$event->location}}<br><br>
+                        <t>Start :</t>{{explode(' ',$event->starting_date)[0]}}<br>
+                        <t>End :</t>{{explode(' ',$event->ending_date)[0]}}
                     </div>
-                </div>
+                @empty
+                    <h4>No events.</h4>
+                @endforelse
+            </div>
 
-            @endforeach
         </div>
     </div>
 @endsection

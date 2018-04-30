@@ -40,11 +40,11 @@
                     @forelse($videos as $video)
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div title="{{$video->title}}" class="gallery_block" data-title="gallery">
-                                <h3>{{str_limit($video->title,30)}}</h3>
+                                <a href="/Details/Video/{{$video->id}}"><h3>{{str_limit($video->title,30)}}</h3></a>
                                 <iframe src="https://www.youtube.com/embed/{{$video->video_name}}" frameborder="0"
                                         allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 <br><br>
-                                <p class="text-justify"><?php echo str_limit(htmlspecialchars_decode($video->details), 100, '...')?></p>
+                                <p class="text-justify"><?php echo str_limit(htmlspecialchars_decode($video->details), 50, '...')?></p>
                                 <a href="/Details/Video/{{$video->id}}">Details... </a>
                             </div>
                         </div>

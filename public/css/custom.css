@@ -179,25 +179,24 @@ h {
 
 .event_block {
     background: linear-gradient(#2b4375, #4194df);
-    color: white;
+    color: navajowhite;
     min-height: 500px;
 }
 
-.event img {
-    width: 200px;
+.event_block img {
+    width: 260px;
 }
 
-.event {
-    padding: 20px;
+.event_block h4{
+    color:wheat;
 }
 
-.event a {
-    color: yellow;
+.event_block h4:hover{
+    color: coral;
 }
 
 .event:hover {
-    border: 2px outset cadetblue;
-    border-radius: 30px;
+    background: rebeccapurple;
 }
 
 .video_block {
@@ -208,15 +207,15 @@ h {
 
 @media (max-width: 974px ) {
     .video_block iframe {
-        height:200px;
-        width:260px;
+        height: 200px;
+        width: 260px;
     }
 }
 
 @media (min-width: 755px) {
     .video_block iframe {
-        height:400px;
-        width:600px;
+        height: 400px;
+        width: 600px;
     }
 }
 
@@ -331,6 +330,6 @@ h {
 }
 
 .G_active > li > a > i > strong {
-    font-size: 0.5em;
+    font-size: 0.4em;
 }
 

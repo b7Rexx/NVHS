@@ -29,7 +29,7 @@ class Frontend extends Controller
     public function DetailEvent($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = event::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        $this->_data['detail'] = event::select('id', 'title', 'image','details','location','starting_date','ending_date')->where('id', '=', $slug)->get();
         return view($this->_path . 'Detail/Event', $this->_data);
     }
 

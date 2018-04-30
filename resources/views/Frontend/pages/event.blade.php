@@ -12,7 +12,7 @@
             <hr>
             <div class="row">
                 @forelse($events as $event)
-                    <div class="col-md-6">
+                    <div class="col-md-6 border" data-aos="fade-left" data-aos-duration="1500">
                         <a href="/Details/Event/{{$event->id}}"><h4>{{strtoupper($event->title)}}</h4></a>
                         <br>
                         <a href="/Details/Event/{{$event->id}}">

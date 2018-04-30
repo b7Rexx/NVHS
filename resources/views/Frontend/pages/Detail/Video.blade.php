@@ -10,6 +10,7 @@
             <br>
             @if(!empty($detail[0]))
                 <h3 class="text-center">{{$detail[0]->title}}</h3>
+                <br>
                 <div class="row">
                     <div class="col-lg-7">
                         <iframe height="400px" width="600px"

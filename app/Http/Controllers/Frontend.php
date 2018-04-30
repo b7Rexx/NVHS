@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\event;
+use App\image;
+use App\video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Frontend extends Controller
 {
@@ -23,26 +26,54 @@ class Frontend extends Controller
         return view($this->_path . 'event', $this->_data);
     }
 
-    public function SlugEvent($slug)
+    public function DetailEvent($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        return view($this->_path . 'Slug/slugEvent', $this->_data);
+        $this->_data['detail'] = event::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        return view($this->_path . 'Detail/Event', $this->_data);
     }
+
+    public function DetailImage($slug)
+    {
+        $this->_data['slugInfo'] = $slug;
+        $this->_data['detail'] = image::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        return view($this->_path . 'Detail/Image', $this->_data);
+    }
+
+    public function DetailVideo($slug)
+    {
+        $this->_data['slugInfo'] = $slug;
+        $this->_data['detail'] = video::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        return view($this->_path . 'Detail/Video', $this->_data);
+    }
+
 
     public function Gallery()
     {
         return view($this->_path . 'gallery');
     }
 
-    public function SlugGallery($slug)
-    {
-        $this->_data['slugInfo'] = $slug;
-        return view($this->_path . 'Slug/slugGallery', $this->_data);
-    }
-
     public function Search(Request $request)
     {
         $this->_data['keywords'] = $request->keyword;
+        $this->_data['key_type'] = isset($request->key_type) ? $request->key_type : 'Show All';
+        $this->_data['all'] = false;
+        if ($request->key_type == 'Events') {
+            $this->_data['Event'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } elseif ($request->key_type == 'Images') {
+            $this->_data['Image'] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } elseif ($request->key_type == 'Videos') {
+            $this->_data['Video'] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+        } else {
+            $this->_data['all'] = true;
+
+            $this->_data['Event'] = event::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+
+            $this->_data['Image'] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+
+            $this->_data['Video'] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
+
+        }
         return view($this->_path . 'search', $this->_data);
     }
 

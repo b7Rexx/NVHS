@@ -17,12 +17,12 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th width="20%">Title</th>
+                            <th width="15%">Title</th>
                             <th>Location</th>
                             <th>Starting Date</th>
                             <th>Ending Date</th>
                             <th>Image</th>
-                            <th>details</th>
+                            <th width="'20%">details</th>
                             <th width="10%">Action</th>
                         </tr>
                         </thead>
@@ -38,7 +38,7 @@
                                 {{$event->details=htmlspecialchars_decode($event->details)}}
                                 <td>{{$event->details}}</td>
                                 <td>
-                                    <a href=""
+                                    <a href="{{route('update-event',['id'=>$event->id])}}"
                                        class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
                                     <a href="{{route('delete-event',['id'=>$event->id])}}"
                                        class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>

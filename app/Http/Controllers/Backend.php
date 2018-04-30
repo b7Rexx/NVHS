@@ -43,21 +43,29 @@ class Backend extends Controller
         $data['ending_date']=$request->ending_date;
         $data['details']=htmlspecialchars($request->details);
         if (event::create($data)) {
-            return redirect()->route('add-event')->with('success', 'Event added successfully');
+            return redirect()->route('view-event')->with('success', 'Event added successfully');
         }
-        return redirect()->back()->with('fail', 'Problem encounter while adding event');
+        return redirect()->back()->with('fail', 'Problem encountered while adding event');
     }
     public function viewEvent(){
         $this->_data['events'] = event::all();
         return view($this->_path . 'events.view-event', $this->_data);
+    }
+    public function updateEvent($id)
+    {
+        return view($this->_path . 'events.update-event');
+    }
+    public function updateEventAction($id)
+    {
+
     }
     public function deleteEvent($id){
         $id = (int)$id;
         $event = event::findOrFail($id);
         if (event::where(['id' => $id])->delete()) {
             $image = $event->image;
-            if (file_exists(public_path('imageuploads/events/' . $image))) {
-                unlink(public_path('imageuploads/events/' . $image));
+            if (file_exists(public_path('image/uploads/events/' . $image))) {
+                unlink(public_path('image/uploads/events/' . $image));
             }
         }
         return redirect()->back()->with('success', 'Event was deleted ');

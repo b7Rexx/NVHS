@@ -29,6 +29,8 @@ Route::group(['prefix' => '@admin@'], function () {
     Route::get('/add-event', 'Backend@addEvent')->name('add-event');
     Route::post('/add-event', 'Backend@addEventAction');
     Route::get('/view-event', 'Backend@viewEvent')->name('view-event');
+    Route::get('/update-event/{id}','Backend@updateEvent')->name('update-event');
+    Route::post('/update-event/{id}','Backend@updateEventAction');
     Route::get('/delete-event/{id}','Backend@deleteEvent')->name('delete-event');
     Route::get('/add-image', 'Backend@addImage')->name('add-image');
     Route::post('/add-image', 'Backend@addImageAction');

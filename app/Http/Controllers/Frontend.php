@@ -43,7 +43,7 @@ class Frontend extends Controller
     public function DetailVideo($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = video::select('id', 'title', 'image')->where('id', '=', $slug)->get();
+        $this->_data['detail'] = video::select('id', 'title', 'details','video_name')->where('id', '=', $slug)->get();
         return view($this->_path . 'Detail/Video', $this->_data);
     }
 

@@ -31,7 +31,7 @@ body {
     background: #211b31;
 }
 
-.footer  a {
+.footer a {
     font-size: 1.1em;
     color: darkorange;
 }
@@ -171,6 +171,12 @@ h {
     border-radius: 25px;
 }
 
+.gallery_block > iframe {
+    height: 240px;
+    width: 240px;
+    margin-left: 10px;
+}
+
 .event_block {
     background: linear-gradient(#2b4375, #4194df);
     color: white;
@@ -192,6 +198,26 @@ h {
 .event:hover {
     border: 2px outset cadetblue;
     border-radius: 30px;
+}
+
+.video_block {
+    background: linear-gradient(#2b4375, #4194df);
+    color: navajowhite;
+    min-height: 500px;
+}
+
+@media (max-width: 974px ) {
+    .video_block iframe {
+        height:200px;
+        width:260px;
+    }
+}
+
+@media (min-width: 755px) {
+    .video_block iframe {
+        height:400px;
+        width:600px;
+    }
 }
 
 .search_block {

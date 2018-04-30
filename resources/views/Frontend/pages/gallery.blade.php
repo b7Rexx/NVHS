@@ -14,14 +14,16 @@
             <ul class="nav tabs">
                 @if($GalleryType == 'Image')
                     <div class="G_active">
-                        <li><a title="Images" href="/Gallery/Image/"><i class="fa fa-image fa-3x"> <strong> Images</strong></i></a></li>
+                        <li><a title="Images" href="/Gallery/Image/"><i class="fa fa-image fa-3x"> <strong>
+                                        Images</strong></i></a></li>
                     </div>
                 @else
                     <li><a title="Images" href="/Gallery/Image/"><i class="fa fa-image fa-3x"></i></a></li>
                 @endif
                 @if($GalleryType == 'Video')
                     <div class="G_active">
-                        <li><a title="Videos" href="/Gallery/Video"><i class="fa fa-video-camera fa-3x"> <strong> Videos</strong></i></a></li>
+                        <li><a title="Videos" href="/Gallery/Video"><i class="fa fa-video-camera fa-3x"> <strong>
+                                        Videos</strong></i></a></li>
                     </div>
                 @else
                     <li><a title="Videos" href="/Gallery/Video"><i class="fa fa-video-camera fa-3x"></i></a></li>
@@ -29,22 +31,31 @@
             </ul>
             <br><br>
             <div class="row">
-                @for($i=0;$i<15;$i++)
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="gallery_block" data-title="gallery">
-                            <h3>&nbsp;&nbsp;&nbsp;IMAGE TITLE</h3>
-                            <img src="{{URL::to('image/uploads/gallery/1.jpg')}}" alt="photo">
-                            <br><br>
-                            <p class="text-justify">{{str_limit("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci
-                                blanditiis,
-                                corporis cumque delectus deserunt expedita, facilis in laborum libero molestias nam
-                                nihil
-                                odio
-                                perspiciatis placeat quam quasi quod saepe.",150)}}</p>
-                            <a href="/Details/Gallery/slug-info-{{$i}}">See more...</a>
+                @if($GalleryType == 'Image')
+                    @forelse($images as $image)
+                    @empty
+                        <h4 class="text-center">No images.</h4>
+                    @endforelse
+                @elseif($GalleryType == 'Video')
+                    @forelse($videos as $video)
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <div title="{{$video->title}}" class="gallery_block" data-title="gallery">
+                                <h3>{{str_limit($video->title,30)}}</h3>
+                                <iframe src="https://www.youtube.com/embed/{{$video->video_name}}" frameborder="0"
+                                        allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                <br><br>
+                                <p class="text-justify"><?php echo str_limit(htmlspecialchars_decode($video->details), 100, '...')?></p>
+                                <a href="/Details/Video/{{$video->id}}">Details... </a>
+                            </div>
                         </div>
-                    </div>
-                @endfor
+                    @empty
+                        <h4 class="text-center">No videos.</h4>
+                    @endforelse
+                @endif
+            </div>
+
+            <div class="row" style="min-height:100px">
+
             </div>
         </div>
     </div>

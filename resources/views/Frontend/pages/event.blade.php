@@ -27,7 +27,8 @@
                     <h4>No events.</h4>
                 @endforelse
             </div>
-
+            <br>
+            <?php echo $events->render();?>
         </div>
     </div>
 @endsection

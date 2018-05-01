@@ -22,14 +22,14 @@ class Frontend extends Controller
 
     public function Event()
     {
-        $this->_data['events'] = event::all()->sortByDesc('id');
+        $this->_data['events'] = event::orderBy('title', 'DESC')->simplePaginate(6);
         return view($this->_path . 'event', $this->_data);
     }
 
     public function DetailEvent($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = event::select('id', 'title', 'image','details','location','starting_date','ending_date')->where('id', '=', $slug)->get();
+        $this->_data['detail'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date')->where('id', '=', $slug)->get();
         return view($this->_path . 'Detail/Event', $this->_data);
     }
 
@@ -43,7 +43,7 @@ class Frontend extends Controller
     public function DetailVideo($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = video::select('id', 'title', 'details','video_name')->where('id', '=', $slug)->get();
+        $this->_data['detail'] = video::select('id', 'title', 'details', 'video_name')->where('id', '=', $slug)->get();
         return view($this->_path . 'Detail/Video', $this->_data);
     }
 
@@ -51,11 +51,11 @@ class Frontend extends Controller
     {
         $this->_data['GalleryType'] = $type;
         if ($type == 'Image') {
-            $this->_data['images'] = image::all()->sortByDesc('id');
+            $this->_data['images'] = image::orderBy('id', 'DESC')->simplePaginate(9);
         } elseif ($type == 'Video') {
-            $this->_data['videos'] = video::all()->sortByDesc('id');
+            $this->_data['videos'] = video::orderBy('id', 'DESC')->simplePaginate(6);
         }
-        return view($this->_path . 'gallery',$this->_data);
+        return view($this->_path . 'gallery', $this->_data);
     }
 
     public function DetailGallery($slug)
@@ -84,7 +84,6 @@ class Frontend extends Controller
             $this->_data['Image'] = image::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
 
             $this->_data['Video'] = video::select('id', 'title', 'details')->where('title', 'like', "%$request->keyword%")->get()->sortByDesc('id');
-
         }
         return view($this->_path . 'search', $this->_data);
     }

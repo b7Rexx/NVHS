@@ -34,7 +34,7 @@
                             <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
                             <br>
                         @endforeach
-                    @elseif(!empty($Image))-
+                    @elseif(!empty($Image))
                         <h4>Images</h4>
                         @foreach($Image as $list1)
                             <a href="Details/Image/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
@@ -67,6 +67,7 @@
                         </div>
                         <br>
                     @endforelse
+
                     <br>
                     <h4>Images</h4>
                     <hr>
@@ -82,6 +83,7 @@
                     <br>
                     <h4>Videos</h4>
                     <hr>
+
                     @forelse($Video as $list3)
                         <a href="Details/Video/{{$list3->id}}"><h2>{{$list3->title}}</h2></a>
                         <?php echo str_limit(htmlspecialchars_decode($list3->details), 150, '...');?>
@@ -94,8 +96,9 @@
                     @endforelse
                 @endif
             </div>
-            <div class="row" style="min-height:100px">
+            <hr>
 
+            <div class="row" style="min-height:100px">
             </div>
         </div>
     </div>

@@ -64,7 +64,12 @@
                     @endforelse
                 @endif
             </div>
-
+            <hr>
+            @if($GalleryType == 'Image')
+                <?php echo $images->render();?>
+            @elseif($GalleryType == 'Video')
+                <?php echo $videos->render();?>
+            @endif
             <div class="row" style="min-height:100px">
 
             </div>

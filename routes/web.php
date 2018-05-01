@@ -39,5 +39,7 @@ Route::group(['prefix' => '@admin@'], function () {
     Route::get('/add-video', 'Backend@addVideo')->name('add-video');
     Route::post('/add-video', 'Backend@addVideoAction');
     Route::get('/view-video', 'Backend@viewVideo')->name('view-video');
+    Route::get('/update-video/{id}','Backend@updateVideo')->name('update-video')->where(['id'=>'[0-9]+']);
+    Route::post('/update-video/{id}','Backend@updateVideoAction')->where(['id'=>'[0-9]+']);
     Route::get('/delete-video/{id}','Backend@deleteVideo')->name('delete-video');
 });

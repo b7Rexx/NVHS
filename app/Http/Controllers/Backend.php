@@ -65,6 +65,7 @@ class Backend extends Controller
 
     public function updateEventAction($id)
     {
+        return $id;
 
     }
 
@@ -127,9 +128,9 @@ class Backend extends Controller
         $url = trim($url);
         $data['video_name'] = $url;
         if (video::create($data)) {
-            return redirect()->route('add-video')->with('success', 'Video uploaded successfully');
+            return redirect()->route('view-video')->with('success', 'Video uploaded successfully');
         }
-        return redirect()->back()->with('fail', 'Problem encountered while uploading videoph');
+        return redirect()->back()->with('fail', 'Problem encountered while uploading video');
     }
 
     public function viewVideo()
@@ -137,6 +138,32 @@ class Backend extends Controller
         $this->_data['videos'] = video::all();
         return view($this->_path . 'videos.view-video', $this->_data);
     }
+
+    public function updateVideo($id)
+    {
+        $this->_data['video'] = video::where(['id'=>$id])->first();
+        return view($this->_path . 'videos.update-video', $this->_data);
+    }
+
+    public function updateVideoAction(Request $request,$id)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'video_name' => 'required',
+            'details' => 'required'
+        ]);
+        $data['title'] = $request->title;
+        $data['details'] = $request->details;
+        $url = $request->video_name;
+        $url = str_replace('https://www.youtube.com/watch?v=', '', $url);
+        $url = trim($url);
+        $data['video_name'] = $url;
+        if (video::where(['id'=>$id])->update($data)) {
+            return redirect()->route('view-video')->with('success', 'Video updated successfully');
+        }
+        return redirect()->back()->with('fail', 'Problem encountered while updating video');
+    }
+
 
     public function deleteVideo($id)
     {

@@ -34,7 +34,7 @@
                                     <?php echo str_limit($video->details = htmlspecialchars_decode($video->details),100)?>
                                 </td>
                                 <td>
-                                    <a href=""
+                                    <a href="{{route('update-video',['id'=>$video->id])}}"
                                        class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
                                     <a href="{{route('delete-video',['id'=>$video->id])}}"
                                        class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>

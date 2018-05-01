@@ -22,7 +22,7 @@ class Frontend extends Controller
 
     public function Event()
     {
-        $this->_data['events'] = event::orderBy('title', 'DESC')->simplePaginate(6);
+        $this->_data['events'] = event::orderBy('id', 'DESC')->simplePaginate(6);
         return view($this->_path . 'event', $this->_data);
     }
 

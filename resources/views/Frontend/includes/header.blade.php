@@ -1,3 +1,7 @@
+<div class="blank">
+    <img src="{{URL::to('image/mid_body_background.jpg')}}" alt="">
+</div>
+
 <section class="header">
     <div class="container">
         <div class="row">

@@ -84,7 +84,7 @@
             </div>
             <div class="row pb-3">
                 @for($i = 0; $i<8;$i++)
-                    <div class="col-md-3 col-sm-3" data-aos="zoom-in-up" data-aos-duration="3000">
+                    <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in-up" data-aos-duration="2000">
                         <a href="/Details/Image/{{$i}}">
                             <div id="fadeContent{{$i}}">
                                 <img class="p-3" id="fadeImage{{$i}}" src="{{URL::to('image/blank.png')}}"

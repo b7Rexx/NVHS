@@ -30,7 +30,7 @@
                 <div class="row">
                     @for($i=0;$i<6;$i++)
                         <div class="col-lg-3 col-md-4 col-sm-6 fade-event" style="position: relative">
-                            <img src="{{URL::to('image/blank.png')}}" alt="photos">
+                            <img src="{{URL::to('image/blank.png')}}" alt="photos" class="custom-gallery custom-image-view">
                             <i class="text-center">TITLE {{$i}}</i>
                         </div>
                     @endfor

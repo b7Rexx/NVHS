@@ -332,6 +332,17 @@ h {
     font-size: 0.5em;
 }
 
-.page-item a{
+.page-item a {
     /*background: greenyellow;*/
+}
+
+.blank {
+    position: fixed;
+    z-index: -10;
+    opacity: 0.6;
+}
+
+.custom-gallery:hover {
+    border-bottom: 5px outset transparent;
+    border-right: 5px outset transparent;
 }

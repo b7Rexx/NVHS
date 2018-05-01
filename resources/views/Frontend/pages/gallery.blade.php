@@ -44,13 +44,15 @@
                         </div>
                     @empty
                         <h4 class="text-center">No images.</h4>
+                        <div class="row" style="min-height:200px"></div>
                     @endforelse
                 @elseif($GalleryType == 'Video')
                     @forelse($videos as $video)
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div title="{{$video->title}}" class="gallery_block" data-title="gallery"
                                  data-aos="fade-left" data-aos-duration="1500">
-                                <a href="/Details/Video/{{$video->id}}"><h3>{{str_limit($video->title,15)}}</h3>
+                                <a href="/Details/Video/{{$video->id}}">
+                                    <h3>{{str_limit($video->title,15)}}</h3>
                                 </a>
                                 <iframe src="https://www.youtube.com/embed/{{$video->video_name}}"
                                         frameborder="0"
@@ -61,6 +63,7 @@
                         </div>
                     @empty
                         <h4 class="text-center">No videos.</h4>
+                        <div class="row" style="min-height:200px"></div>
                     @endforelse
                 @endif
             </div>
@@ -70,9 +73,7 @@
             @elseif($GalleryType == 'Video')
                 <?php echo $videos->render();?>
             @endif
-            <div class="row" style="min-height:100px">
-
-            </div>
+            <div class="row" style="min-height:50px"></div>
         </div>
     </div>
 @endsection

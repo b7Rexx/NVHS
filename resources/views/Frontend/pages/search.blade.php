@@ -8,8 +8,7 @@
     <div class="search_block">
         <div class="container">
             <br><br>
-            <form method="post" action="{{route('search')}}">
-                {{csrf_field()}}
+            <form method="get" action="{{route('search')}}">
                 &nbsp;<i class="fa fa-search pr-3"> Search</i>
                 <input class="form-control input-form float-left" type="search" value="{{$keywords}}" name="keyword"
                        autocomplete="off">
@@ -34,6 +33,9 @@
                             <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
                             <br>
                         @endforeach
+                        <br>
+                        <?php echo $Event->appends(request()->input())->render();?>
+
                     @elseif(!empty($Image))
                         <h4>Images</h4>
                         @foreach($Image as $list1)
@@ -41,6 +43,8 @@
                             <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
                             <br>
                         @endforeach
+                        <br>
+                        <?php echo $Image->appends(request()->input())->render();?>
                     @elseif(!empty($Video))
                         <h4>Videos</h4>
                         @foreach($Video as $list1)
@@ -48,6 +52,8 @@
                             <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
                             <br>
                         @endforeach
+                        <br>
+                        <?php echo $Video->appends(request()->input())->render();?>
                     @else
                         <div>
                             No related posts.
@@ -67,7 +73,6 @@
                         </div>
                         <br>
                     @endforelse
-
                     <br>
                     <h4>Images</h4>
                     <hr>
@@ -98,7 +103,7 @@
             </div>
             <hr>
 
-            <div class="row" style="min-height:100px">
+            <div class="row" style="min-height:50px">
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ Route::get('/Details/Image/{slug}', 'Frontend@DetailImage');
 Route::get('/Details/Video/{slug}', 'Frontend@DetailVideo');
 Route::get('/Details/Gallery/{slug}', 'Frontend@DetailGallery');
 Route::get('/Gallery/{type}', 'Frontend@Gallery');
-Route::post('/Search', 'Frontend@Search')->name('search');
+Route::get('/Search', 'Frontend@Search')->name('search');
 Route::get('/Company/{slug}', 'Frontend@Company')->name('company');
 Route::get('/Contact', 'Frontend@Contact')->name('contact');
 

@@ -37,6 +37,8 @@ class Frontend extends Controller
     {
         $this->_data['slugInfo'] = $slug;
         $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->get();
+        $this->_data['featured_image'] = DB::table('images_references')->where('image_id','=',$slug)->first();
+        $this->_data['images'] = DB::table('images_references')->where('image_id','=',$slug)->get();
         return view($this->_path . 'Detail/Image', $this->_data);
     }
 

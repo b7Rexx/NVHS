@@ -12,7 +12,7 @@
                 <h3 class="text-center">{{$detail[0]->title}}</h3>
                 <hr>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 event-image">
                         <img src="{{URL::to('image/uploads/events/'.$detail[0]->image)}}" alt="photo">
                     </div>
                     <div class="col-lg-5">
@@ -20,10 +20,10 @@
                         <h5>Description :</h5>
                         <p class="text-justify"><?php echo htmlspecialchars_decode($detail[0]->details)?></p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 text-right">
                         Location : {{$detail[0]->location}}<br><br>
-                        <t>Start :</t>{{explode(' ',$detail[0]->starting_date)[0]}}<br>
-                        <t>End :</t>{{explode(' ',$detail[0]->ending_date)[0]}}
+                        <t>Start : </t>{{explode(' ',$detail[0]->starting_date)[0]}}<br>
+                        <t>End : </t>{{explode(' ',$detail[0]->ending_date)[0]}}
                     </div>
                 </div>
                 <br><br>

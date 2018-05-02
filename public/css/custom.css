@@ -121,8 +121,8 @@ h {
 }
 
 /*.mid-body {*/
-    /*background: url("../image/mid_body.jpg") no-repeat center center/cover;*/
-    /*opacity: 0.6*/
+/*background: url("../image/mid_body.jpg") no-repeat center center/cover;*/
+/*opacity: 0.6*/
 /*}*/
 
 .fadeTitle {
@@ -184,6 +184,10 @@ h {
 }
 
 .event_block img {
+    width: 240px;
+}
+
+.event-image img {
     width: 240px;
     max-height: 200px;
 }

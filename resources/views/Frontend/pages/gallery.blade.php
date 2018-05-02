@@ -38,7 +38,7 @@
                                  data-aos="fade-left" data-aos-duration="1500">
                                 <a href="/Details/Image/{{$image->id}}"><h3>{{str_limit($image->title,15)}}</h3></a>
                                 <br><br>
-                                <a href="/Details/Video/{{$image->id}}"><?php echo str_limit(htmlspecialchars_decode($image->details), 100)?></p>
+                                <a href="/Details/Image/{{$image->id}}"><?php echo str_limit(htmlspecialchars_decode($image->details), 100)?></p>
                                     <br>...Details... </a>
                             </div>
                         </div>

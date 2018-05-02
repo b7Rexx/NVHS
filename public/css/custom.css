@@ -120,16 +120,17 @@ h {
     fill: url(#MyGradient2);
 }
 
-.mid-body {
-    background: url("../image/mid_body_background1.jpg");
-}
+/*.mid-body {*/
+    /*background: url("../image/mid_body.jpg") no-repeat center center/cover;*/
+    /*opacity: 0.6*/
+/*}*/
 
 .fadeTitle {
     display: none;
     position: absolute;
     z-index: 1;
     top: 0;
-    color: navajowhite;
+    color: midnightblue;
     padding: 20px;
 }
 
@@ -184,6 +185,7 @@ h {
 
 .event_block img {
     width: 240px;
+    max-height: 200px;
 }
 
 .event_block h4 {
@@ -226,6 +228,15 @@ h {
 
 .search_block a:hover {
     color: white;
+}
+
+.search_block h4 {
+    color: yellow;
+    text-align: center;
+}
+
+.search_block h2 {
+    color: greenyellow;
 }
 
 .input-form {
@@ -339,7 +350,7 @@ h {
 .blank {
     position: fixed;
     z-index: -10;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .custom-gallery:hover {

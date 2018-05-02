@@ -5,29 +5,25 @@
 @endsection
 
 @section('body')
-    <div class="event_block">
+    <div class="video_block">
         <div class="container">
             <br>
-            <h1 class="text-center">Event</h1>
-            <div class="event">
-                {{$slugInfo}}
-                    <div class="row">
-                    <div class="col-md-3">
-                        <img src="{{URL::to('image/uploads/events/'.$detail[0]->image)}}" alt="photo">
-                    </div>
-                    <div class="col-md-6">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, laborum libero nulla
-                            pariatur
-                            perferendis sunt velit vero! Ad commodi consequuntur dolorem esse inventore natus neque
-                            odit
-                            quisquam. Ducimus, porro repellendus.</p>
-                    </div>
-                    <div class="col-md-3">
-                        {{date('Y/m/d')}}
+            @if(!empty($detail[0]))
+                <h3 class="text-center">{{$detail[0]->title}}</h3>
+                <br>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <img src="{{URL::to('gallery/'.$detail[0]->id)}}" alt="No image in id no {{$detail[0]->id}}"></div>
+                    <div class="col-lg-5">
+                        <br>
+                        <h5>Description :</h5>
+                        <p><?php echo htmlspecialchars_decode($detail[0]->details)?></p>
                     </div>
                 </div>
-            </div>
-
+            @else
+                <h5>No image found.</h5>
+                <h5>Go to <a href="/Gallery/Image" style="color: whitesmoke">images</a> to view list</h5>
+            @endif
         </div>
     </div>
 @endsection

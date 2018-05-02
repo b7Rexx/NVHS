@@ -87,7 +87,6 @@
                     <h4>Images</h4>
                     <hr>
                     @forelse($Image as $list2)
-                        <hr>
                         <a href="Details/Image/{{$list2->id}}"><h2>{{$list2->title}}</h2></a>
                         <?php echo str_limit(htmlspecialchars_decode($list2->details), 150, '...')?>
                         <br>

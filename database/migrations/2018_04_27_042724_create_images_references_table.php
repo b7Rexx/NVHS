@@ -15,7 +15,7 @@ class CreateImagesReferencesTable extends Migration
     {
         Schema::create('images_references', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('image_id');
+            $table->integer('image_id')->unsigned();
             $table->string('image_name');
             $table->foreign('image_id')->references('id')->on('images')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

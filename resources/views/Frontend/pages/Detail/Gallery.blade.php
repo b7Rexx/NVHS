@@ -5,29 +5,32 @@
 @endsection
 
 @section('body')
-    <div class="event_block">
+    <div class="gallery_detail_block">
         <div class="container">
             <br>
-            <h1 class="text-center">Event</h1>
-            <div class="event">
-                {{$slugInfo}}
-                    <div class="row">
-                    <div class="col-md-3">
-{{--                        <img src="{{URL::to('image/uploads/events/'.$detail[0]->image)}}" alt="photo">--}}
-                    </div>
-                    <div class="col-md-6">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, laborum libero nulla
-                            pariatur
-                            perferendis sunt velit vero! Ad commodi consequuntur dolorem esse inventore natus neque
-                            odit
-                            quisquam. Ducimus, porro repellendus.</p>
-                    </div>
-                    <div class="col-md-3">
-                        {{date('Y/m/d')}}
+            @if(!empty($detail[0]))
+                <h3 class="text-center">{{$detail[0]->title}}</h3>
+                <br>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <br>
+                        <h5>Description :</h5>
+                        <p><?php echo htmlspecialchars_decode($detail[0]->details)?></p>
                     </div>
                 </div>
-            </div>
-
+                <div class="row">
+                    @foreach($images as $image)
+                        <div class="col-lg-3 col-md-4 col-sm-6 fade-event" style="position: relative">
+                            <img src="{{URL::to('image/uploads/gallery/'.$image->image_name.'.jpg   ')}}" alt="photos"
+                                 class="custom-gallery custom-image-view">
+                            <i class="text-center">TITLE {{$image->image_id}}</i>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <h5>No image found.</h5>
+                <h5>Go to <a href="/Gallery/Image" style="color: whitesmoke">image gallery</a> to view list</h5>
+            @endif
         </div>
     </div>
 @endsection

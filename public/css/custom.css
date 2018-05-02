@@ -361,3 +361,13 @@ h {
     border-bottom: 5px outset transparent;
     border-right: 5px outset transparent;
 }
+
+.gallery_detail_block{
+    background: linear-gradient(#2b4375, #4194df);
+    color: navajowhite;
+    min-height: 500px;
+}
+
+.gallery_detail_block img{
+    width:240px;
+}

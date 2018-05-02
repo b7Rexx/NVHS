@@ -36,9 +36,11 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div title="{{$image->title}}" class="gallery_block" data-title="gallery"
                                  data-aos="fade-left" data-aos-duration="1500">
-                                <a href="/Details/Image/{{$image->id}}"><h3>{{str_limit($image->title,15)}}</h3></a>
-                                <br><br>
-                                <a href="/Details/Image/{{$image->id}}"><?php echo str_limit(htmlspecialchars_decode($image->details), 100)?></p>
+                                <a href="/Details/Gallery/{{$image->id}}"><h3>{{str_limit($image->title,15)}}</h3></a>
+                                <br>
+                                <img src="" alt="">
+                                <br>
+                                <a href="/Details/Gallery/{{$image->id}}"><?php echo str_limit(htmlspecialchars_decode($image->details), 100)?></p>
                                     <br>...Details... </a>
                             </div>
                         </div>
@@ -46,6 +48,7 @@
                         <h4 class="text-center">No images.</h4>
                         <div class="row" style="min-height:200px"></div>
                     @endforelse
+
                 @elseif($GalleryType == 'Video')
                     @forelse($videos as $video)
                         <div class="col-lg-4 col-md-6 col-sm-12">

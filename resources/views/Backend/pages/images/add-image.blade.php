@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="file" class="form-control has-feedback-left" name="image" id="inputSuccess4">
+                        <input type="file" class="form-control has-feedback-left" name="image[]" id="inputSuccess4" multiple>
                         <span class="fa fa-file-image-o form-control-feedback left" aria-hidden="true"></span>
 
                         @if($errors->has('image'))

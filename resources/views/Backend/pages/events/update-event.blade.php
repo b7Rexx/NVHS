@@ -5,17 +5,17 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>update Events</h2>
+                <h2>update Event</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
                 @include('Backend.includes.message')
-                <form method="post" enctype="multipart/form-data" action="{{route('update-event')}}"
+                <form method="post" enctype="multipart/form-data" action="{{route('update-event',['id'=>$event->id])}}"
                       class="form-horizontal form-label-left input_mask">
                     {{csrf_field()}}
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="text" name="title" class="form-control has-feedback-left"
+                        <input type="text" name="title" class="form-control has-feedback-left" value="{{$event->title}}"
                                placeholder="Event Title">
                         <span class="fa fa-newspaper-o form-control-feedback left" aria-hidden="true"></span>
 
@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                        <input type="text" name="location" class="form-control has-feedback-left"
+                        <input type="text" name="location" class="form-control has-feedback-left" value="{{$event->location}}"
                                placeholder="Event location">
                         <span class="fa fa-map-marker form-control-feedback left" aria-hidden="true"></span>
 
@@ -44,7 +44,7 @@
                         <div class="input-group date form_datetime"
                              data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input1">
                             <input class="form-control has-feedback-left" name="starting_date" size="16" type="text"
-                                   value="" placeholder="Event Starting date" readonly>
+                                   value="{{$event->starting_date}}" placeholder="Event Starting date" readonly>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                         </div>
                         <span class="fa fa-calendar  form-control-feedback left" aria-hidden="true"></span>
@@ -62,7 +62,7 @@
                         <div class="input-group date form_datetime"
                              data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="dtp_input2">
                             <input class="form-control has-feedback-left" name="ending_date" size="16" type="text"
-                                   value="" placeholder="Event ending date" readonly>
+                                   value="{{$event->ending_date}}" placeholder="Event ending date" readonly>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th" style="display:none;"></span></span>
                         </div>
                         <span class="fa fa-calendar  form-control-feedback left" aria-hidden="true"></span>
@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <label for="details" class="control-label">Event Details</label>
-                            <textarea id="details" name="details" class="form-control" cols="30"></textarea>
+                            <textarea id="details" name="details" class="form-control" cols="30">{{htmlspecialchars_decode($event->details)}}</textarea>
                         </div>
                         @if($errors->has('details'))
                             <div class="text-danger">
@@ -107,7 +107,7 @@
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                             <button type="button" class="btn btn-primary">Cancel</button>
                             <button class="btn btn-primary" type="reset">Reset</button>
-                            <button type="submit" class="btn btn-success">Add Event</button>
+                            <button type="submit" class="btn btn-success">Update Event</button>
                         </div>
                     </div>
                 </form>
@@ -117,6 +117,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('title')
+    Update Event
 @endsection
 @section('my-script')
 

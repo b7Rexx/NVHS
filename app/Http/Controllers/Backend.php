@@ -60,12 +60,41 @@ class Backend extends Controller
 
     public function updateEvent($id)
     {
-        return view($this->_path . 'events.update-event');
+        $this->_data['event'] = event::where(['id'=>$id])->first();
+        return view($this->_path . 'events.update-event', $this->_data);
     }
 
-    public function updateEventAction($id)
+    public function updateEventAction(Request $request,$id)
     {
-        return $id;
+        $this->validate($request, [
+            'title' => 'required',
+            'location' => 'required',
+            'starting_date' => 'required',
+            'ending_date' => 'required',
+            'details' => 'required'
+        ]);
+        $data['title'] = $request->title;
+        $data['location'] = $request->location;
+        $data['starting_date'] = $request->starting_date;
+        $data['ending_date'] = $request->ending_date;
+        $data['details'] = htmlspecialchars($request->details);
+        if ($request->hasFile('image')) {
+            $id = (int)$id;
+            $event = event::findOrFail($id);
+            $eventImage = $event->image;
+            if (file_exists(public_path('image/uploads/events/' . $eventImage))) {
+                unlink(public_path('image/uploads/events/' . $eventImage));
+            }
+            $file = $request->file('image');
+            $extension = strtolower($file->extension());
+            $newName = time() . '_.' . $extension;
+            $request->image->move(public_path('image/uploads/events'), $newName);
+            $data['image'] = $newName;
+        }
+        if (event::where(['id'=>$id])->update($data)) {
+            return redirect()->route('view-event')->with('success', 'Event updated successfully');
+        }
+        return redirect()->back()->with('fail', 'Problem encountered while updating event');
 
     }
 

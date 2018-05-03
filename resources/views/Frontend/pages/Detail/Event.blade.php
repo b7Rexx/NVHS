@@ -12,7 +12,7 @@
                 <h3 class="text-center">{{$detail[0]->title}}</h3>
                 <hr>
                 <div class="row">
-                    <div class="col-md-4 event-image">
+                    <div class="col-md-4 event-image-detail">
                         <img src="{{URL::to('image/uploads/events/'.$detail[0]->image)}}" alt="photo">
                     </div>
                     <div class="col-lg-5">

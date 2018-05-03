@@ -12,16 +12,17 @@
             <hr>
             <div class="row">
                 @forelse($events as $event)
-                    <div class="col-md-6 border event-image" data-aos="fade-left" data-aos-duration="1500">
-                        <a href="/Details/Event/{{$event->id}}"><h4>{{strtoupper($event->title)}}</h4></a>
-                        <br>
+                    <div class="col-md-5 event-image" data-aos="fade-left" data-aos-duration="1500">
                         <a href="/Details/Event/{{$event->id}}">
                             <img src="{{URL::to('image/uploads/events/'.$event->image)}}" alt="photo">
                         </a>
-                        <p><?php echo str_limit(htmlspecialchars_decode($event->details), 120, '...');?></p>
+                        <br>
+                        <a href="/Details/Event/{{$event->id}}"><h4>{{strtoupper($event->title)}}</h4></a>
+                        <p><?php echo str_limit(htmlspecialchars_decode($event->details), 70, '...');?></p>
                         Location : {{$event->location}}<br><br>
                         <t>Start :</t>{{explode(' ',$event->starting_date)[0]}}<br>
                         <t>End :</t>{{explode(' ',$event->ending_date)[0]}}
+                        <br><br>
                     </div>
                 @empty
                     <h4>No events.</h4>

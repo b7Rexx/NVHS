@@ -28,10 +28,13 @@
                             <tr>
                                 <td>{{++$key}}</td>
                                 <td>{{$video->title}}</td>
-                                <td><iframe width="280" height="186" src="https://www.youtube.com/embed/{{$video->video_name}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                <td>
+                                    <iframe width="280" height="186"
+                                            src="https://www.youtube.com/embed/{{$video->video_name}}" frameborder="0"
+                                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
                                 </td>
                                 <td>
-                                    <?php echo str_limit($video->details = htmlspecialchars_decode($video->details),100)?>
+                                    <?php echo str_limit($video->details = htmlspecialchars_decode($video->details), 100)?>
                                 </td>
                                 <td>
                                     <a href="{{route('update-video',['id'=>$video->id])}}"
@@ -49,7 +52,7 @@
                         @endforelse
                         </tbody>
                     </table>
-
+                    {{$videos->links()}}
                 </div>
             </div>
         </div>

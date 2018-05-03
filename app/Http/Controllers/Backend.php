@@ -6,6 +6,7 @@ use App\event;
 use App\image;
 use App\video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Backend extends Controller
 {
@@ -54,17 +55,17 @@ class Backend extends Controller
 
     public function viewEvent()
     {
-        $this->_data['events'] = event::all();
+        $this->_data['events'] = event::paginate(10);
         return view($this->_path . 'events.view-event', $this->_data);
     }
 
     public function updateEvent($id)
     {
-        $this->_data['event'] = event::where(['id'=>$id])->first();
+        $this->_data['event'] = event::where(['id' => $id])->first();
         return view($this->_path . 'events.update-event', $this->_data);
     }
 
-    public function updateEventAction(Request $request,$id)
+    public function updateEventAction(Request $request, $id)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -91,10 +92,10 @@ class Backend extends Controller
             $request->image->move(public_path('image/uploads/events'), $newName);
             $data['image'] = $newName;
         }
-        if (event::where(['id'=>$id])->update($data)) {
+        if (event::where(['id' => $id])->update($data)) {
             return redirect()->route('view-event')->with('success', 'Event updated successfully');
         }
-        return redirect()->back()->with('fail', 'Problem encountered while updating event');
+        return redirect()->back()->with('fail', 'Problem encountered while updating ');
 
     }
 
@@ -121,29 +122,41 @@ class Backend extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'image' => 'required',
             'description' => 'required'
         ]);
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extension = strtolower($file->extension());
-            $newName = time() . '_.' . $extension;
-            $request->image->move(public_path('image/uploads/gallery'), $newName);
-            $data['image_name'] = $newName;
-        }
         $data['title'] = $request->title;
-        $data['description'] = $request->description;
-        if (image::create($data)) {
-            return redirect()->route('add-image')->with('success', 'Image uploaded successfully');
+        $data['details'] = $request->description;
+        if ($img = image::create($data)) {
+            $imgId = $img->id;
+
+            if ($request->hasFile('image')) {
+                $files = $request->file('image');
+                foreach ($files as $file) {
+                    $extension = strtolower($file->extension());
+                    $newName = str_random(10) . '_.' . $extension;
+                    $file->move(public_path('image/uploads/gallery'), $newName);
+                    $ref_data['image_id']=$imgId;
+                    $ref_data['image_name']=$newName;
+                    DB::table('images_references')->insert($ref_data);
+                }
+
+                return redirect()->route('add-image')->with('success', 'Image uploaded successfully');
+            }
+
         }
         return redirect()->back()->with('fail', 'There was some problem');
     }
 
-    public function addVideo()
+
+    public
+    function addVideo()
     {
         return view($this->_path . 'videos.add-video');
     }
 
-    public function addVideoAction(Request $request)
+    public
+    function addVideoAction(Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -162,19 +175,22 @@ class Backend extends Controller
         return redirect()->back()->with('fail', 'Problem encountered while uploading video');
     }
 
-    public function viewVideo()
+    public
+    function viewVideo()
     {
-        $this->_data['videos'] = video::all();
+        $this->_data['videos'] = video::paginate(5);
         return view($this->_path . 'videos.view-video', $this->_data);
     }
 
-    public function updateVideo($id)
+    public
+    function updateVideo($id)
     {
-        $this->_data['video'] = video::where(['id'=>$id])->first();
+        $this->_data['video'] = video::where(['id' => $id])->first();
         return view($this->_path . 'videos.update-video', $this->_data);
     }
 
-    public function updateVideoAction(Request $request,$id)
+    public
+    function updateVideoAction(Request $request, $id)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -187,14 +203,15 @@ class Backend extends Controller
         $url = str_replace('https://www.youtube.com/watch?v=', '', $url);
         $url = trim($url);
         $data['video_name'] = $url;
-        if (video::where(['id'=>$id])->update($data)) {
+        if (video::where(['id' => $id])->update($data)) {
             return redirect()->route('view-video')->with('success', 'Video updated successfully');
         }
         return redirect()->back()->with('fail', 'Problem encountered while updating video');
     }
 
 
-    public function deleteVideo($id)
+    public
+    function deleteVideo($id)
     {
         $id = (int)$id;
         $video = video::findOrFail($id);

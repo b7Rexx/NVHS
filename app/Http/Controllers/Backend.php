@@ -55,7 +55,7 @@ class Backend extends Controller
 
     public function viewEvent()
     {
-        $this->_data['events'] = event::paginate(10);
+        $this->_data['events'] = event::orderBy('id','DESC')->paginate(10);
         return view($this->_path . 'events.view-event', $this->_data);
     }
 
@@ -178,7 +178,7 @@ class Backend extends Controller
     public
     function viewVideo()
     {
-        $this->_data['videos'] = video::paginate(5);
+        $this->_data['videos'] = video::orderBy('id','DESC')->paginate(5);
         return view($this->_path . 'videos.view-video', $this->_data);
     }
 

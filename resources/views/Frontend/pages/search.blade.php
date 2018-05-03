@@ -30,9 +30,8 @@
                         <h4>Events</h4>
                         @forelse($Event as $list1)
                             <a href="Details/Event/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
-                            <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
-                            <br>
-                            <br>
+                            <?php echo strip_tags(str_limit(htmlspecialchars_decode($list1->details), 150, '...'))?>
+                            <br><br>
                         @empty
                             No events found.
                         @endforelse
@@ -43,9 +42,8 @@
                         <h4>Images</h4>
                         @forelse($Image as $list1)
                             <a href="Details/Image/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
-                            <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
-                            <br>
-                            <br>
+                            <?php echo strip_tags(str_limit(htmlspecialchars_decode($list1->details), 150, '...'))?>
+                            <br><br>
                         @empty
                             No images found.
                         @endforelse
@@ -55,7 +53,7 @@
                         <h4>Videos</h4>
                         @forelse($Video as $list1)
                             <a href="Details/Video/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
-                            <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...')?>
+                            <?php echo strip_tags(str_limit(htmlspecialchars_decode($list1->details), 150, '...'))?>
                             <br>
                             <br>
                         @empty
@@ -74,7 +72,7 @@
                     <hr>
                     @forelse($Event as $list1)
                         <a href="Details/Event/{{$list1->id}}"><h2>{{$list1->title}}</h2></a>
-                        <?php echo str_limit(htmlspecialchars_decode($list1->details), 150, '...');?>
+                        <?php echo strip_tags(str_limit(htmlspecialchars_decode($list1->details), 150, '...'));?>
                         <br>
                         <br>
                     @empty
@@ -88,9 +86,8 @@
                     <hr>
                     @forelse($Image as $list2)
                         <a href="Details/Image/{{$list2->id}}"><h2>{{$list2->title}}</h2></a>
-                        <?php echo str_limit(htmlspecialchars_decode($list2->details), 150, '...')?>
-                        <br>
-                        <br>
+                        <?php echo strip_tags(str_limit(htmlspecialchars_decode($list2->details), 150, '...'))?>
+                        <br><br>
                     @empty
                         <div>No related images.</div>
                         <br>
@@ -101,7 +98,7 @@
 
                     @forelse($Video as $list3)
                         <a href="Details/Video/{{$list3->id}}"><h2>{{$list3->title}}</h2></a>
-                        <?php echo str_limit(htmlspecialchars_decode($list3->details), 150, '...');?>
+                        <?php echo strip_tags(str_limit(htmlspecialchars_decode($list3->details), 150, '...'));?>
                         <br>
                         <br>
                     @empty

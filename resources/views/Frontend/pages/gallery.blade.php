@@ -36,13 +36,14 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <div title="{{$image->title}}" class="gallery_block" data-title="gallery"
                                  data-aos="fade-left" data-aos-duration="1500">
-                                <a href="/Details/Gallery/{{$image->id}}"><h3>{{str_limit($image->title,15)}}</h3></a>
-                                <?php $featured_image = DB::table('images_references')->where('image_id', '=', $image->id)->first();
-                                $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
-                                <img src="{{URL::to('image/uploads/gallery/'.$f_img.'.jpg')}}"
-                                     alt="No image">
-                                <br>
-                                <a href="/Details/Gallery/{{$image->id}}"><br>...Details... </a>
+                                <a href="/Details/Gallery/{{$image->id}}"><h3>{{str_limit($image->title,15)}}</h3>
+                                    <?php $featured_image = DB::table('images_references')->where('image_id', '=', $image->id)->first();
+                                    $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
+                                    <img src="{{URL::to('image/uploads/gallery/'.$f_img )}}"
+                                         alt="No image">
+                                    <br>
+                                    {{--<a href="/Details/Gallery/{{$image->id}}"><br>...Details... </a>--}}
+                                </a>
                             </div>
                             <br>
                         </div>

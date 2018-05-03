@@ -21,9 +21,8 @@
                 <div class="row">
                     @foreach($images as $image)
                         <div class="col-lg-3 col-md-4 col-sm-6 fade-event" style="position: relative">
-                            <img src="{{URL::to('image/uploads/gallery/'.$image->image_name.'.jpg   ')}}" alt="photos"
+                            <img src="{{URL::to('image/uploads/gallery/'.$image->image_name)}}" alt="photos"
                                  class="custom-gallery custom-image-view">
-                            <i class="text-center">TITLE {{$image->image_id}}</i>
                         </div>
                     @endforeach
                 </div>

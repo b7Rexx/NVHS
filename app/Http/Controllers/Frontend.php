@@ -36,8 +36,8 @@ class Frontend extends Controller
     public function DetailImage($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->all();
-        $this->_data['images'] = DB::table('images_references')->where('image_id','=',$slug)->get();
+        $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->get();
+        $this->_data['images'] = DB::table('images_references')->where('image_id', '=', $slug)->get();
         return view($this->_path . 'Detail/Image', $this->_data);
     }
 
@@ -45,7 +45,10 @@ class Frontend extends Controller
     {
         $this->_data['slugInfo'] = $slug;
         $this->_data['detail'] = video::select('id', 'title', 'details', 'video_name')->where('id', '=', $slug)->get();
-        return view($this->_path . 'Detail/Video', $this->_data);
+
+        //related videos in frontend
+        $this->_data['related_videos'] = video::select('id', 'title', 'details', 'video_name')->get()->take(7);
+           return view($this->_path . 'Detail/Video', $this->_data);
     }
 
     public function Gallery($type)
@@ -61,9 +64,8 @@ class Frontend extends Controller
 
     public function DetailGallery($slug)
     {
-        $this->_data['slugInfo'] = $slug;
         $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->get();
-        $this->_data['images'] = DB::table('images_references')->select('id','image_id','image_name')->where('image_id','=',$slug)->get();
+        $this->_data['images'] = DB::table('images_references')->where('image_id', '=', $slug)->get();
         return view($this->_path . 'Detail/Gallery', $this->_data);
     }
 

@@ -36,7 +36,7 @@
                         <ul class="nav child_menu">
                             <li><a><i class="fa fa-picture-o"></i> Image <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="#">View</a></li>
+                                    <li><a href="{{route('view-image')}}">View</a></li>
                                     <li><a href="{{route('add-image')}}">Add</a></li>
                                 </ul>
                             </li>

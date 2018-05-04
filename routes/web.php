@@ -36,7 +36,7 @@ Route::group(['prefix' => '@admin@'], function () {
     Route::get('/delete-event/{id}','Backend@deleteEvent')->name('delete-event');
     Route::get('/add-image', 'Backend@addImage')->name('add-image');
     Route::post('/add-image', 'Backend@addImageAction');
-    Route::post('/add-image', 'Backend@addImageAction');
+    Route::get('/view-image', 'Backend@viewImage')->name('view-image');
     Route::get('/add-video', 'Backend@addVideo')->name('add-video');
     Route::post('/add-video', 'Backend@addVideoAction');
     Route::get('/view-video', 'Backend@viewVideo')->name('view-video');

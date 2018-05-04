@@ -148,6 +148,11 @@ class Backend extends Controller
         return redirect()->back()->with('fail', 'There was some problem');
     }
 
+    public function viewImage()
+    {
+        $this->_data['images'] = image::all();
+        return view($this->_path . 'images.view-image', $this->_data);
+    }
 
     public
     function addVideo()
@@ -175,8 +180,7 @@ class Backend extends Controller
         return redirect()->back()->with('fail', 'Problem encountered while uploading video');
     }
 
-    public
-    function viewVideo()
+    public function viewVideo()
     {
         $this->_data['videos'] = video::paginate(5);
         return view($this->_path . 'videos.view-video', $this->_data);

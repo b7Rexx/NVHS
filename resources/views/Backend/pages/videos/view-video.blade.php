@@ -26,7 +26,7 @@
                         <tbody>
                         @forelse($videos as $key=> $video)
                             <tr>
-                                <td>{{++$key}}</td>
+                                <td>{{++$key+5*(isset($_GET['page'])?$_GET['page']-1:0)}}</td>
                                 <td>{{$video->title}}</td>
                                 <td>
                                     <iframe width="280" height="186"

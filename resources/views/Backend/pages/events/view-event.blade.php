@@ -29,7 +29,7 @@
                         <tbody>
                         @forelse($events as $key=> $event)
                             <tr>
-                                <td>{{++$key}}</td>
+                                <td>{{++$key+10*(isset($_GET['page'])?$_GET['page']-1:0)}}</td>
                                 <td>{{$event->title}}</td>
                                 <td>{{$event->location}}</td>
                                 <td>{{$event->starting_date}}</td>

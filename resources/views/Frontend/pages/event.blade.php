@@ -16,7 +16,7 @@
                         <a href="/Details/Event/{{$event->id}}">
                             <img src="{{URL::to('image/uploads/events/'.$event->image)}}" alt="photo">
                         </a>
-                        <br>
+                        <br><br>
                         <a href="/Details/Event/{{$event->id}}"><h4>{{strtoupper($event->title)}}</h4></a>
                         <p><?php echo str_limit(htmlspecialchars_decode($event->details), 70, '...');?></p>
                         Location : {{$event->location}}<br><br>

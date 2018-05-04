@@ -7,6 +7,7 @@ use App\image;
 use App\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class Frontend extends Controller
 {
@@ -17,7 +18,8 @@ class Frontend extends Controller
     //
     public function index()
     {
-        return view($this->_path . 'home');
+        $this->_data['images'] = image::all()->sortByDesc('id   ')->take(8);
+        return view($this->_path . 'home', $this->_data);
     }
 
     public function Event()
@@ -36,8 +38,8 @@ class Frontend extends Controller
     public function DetailImage($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->all();
-        $this->_data['images'] = DB::table('images_references')->where('image_id','=',$slug)->get();
+        $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->get();
+        $this->_data['images'] = DB::table('images_references')->where('image_id', '=', $slug)->get();
         return view($this->_path . 'Detail/Image', $this->_data);
     }
 
@@ -45,6 +47,9 @@ class Frontend extends Controller
     {
         $this->_data['slugInfo'] = $slug;
         $this->_data['detail'] = video::select('id', 'title', 'details', 'video_name')->where('id', '=', $slug)->get();
+
+        //related videos in frontend
+        $this->_data['related_videos'] = video::select('id', 'title', 'details', 'video_name')->get()->take(7);
         return view($this->_path . 'Detail/Video', $this->_data);
     }
 
@@ -61,9 +66,8 @@ class Frontend extends Controller
 
     public function DetailGallery($slug)
     {
-        $this->_data['slugInfo'] = $slug;
         $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->get();
-        $this->_data['images'] = DB::table('images_references')->select('id','image_id','image_name')->where('image_id','=',$slug)->get();
+        $this->_data['images'] = DB::table('images_references')->where('image_id', '=', $slug)->get();
         return view($this->_path . 'Detail/Gallery', $this->_data);
     }
 
@@ -100,4 +104,19 @@ class Frontend extends Controller
         $this->_data['slugInfo'] = $slug;
         return view($this->_path . 'Company/company', $this->_data);
     }
+
+
+    public function send(Request $request)
+    {
+        $email = $request->email;
+        $name = $request->name;
+        $title = $request->title;
+        $content = $request->body;
+
+
+        return redirect()->back()->with('success', 'Mail sent');
+    }
 }
+
+
+

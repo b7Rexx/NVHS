@@ -9,9 +9,10 @@
         <div class="top-body">
             <div class="container">
                 <div class="text-center p-5">
-                    <h>NVHS</h>
-                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cum doloribus ipsa
-                        temporibus? Accusamus assumenda.</h5>
+                    <h1>N V H S</h1>
+                    <h4>National Vocational Hospitality Services </h4>
+                    <h><i class="fa fa-quote-left"></i>Quote!!!Lorem ipsum dolor sit amet.<i
+                                class="fa fa-quote-right"></i></h>
                 </div>
 
 
@@ -24,13 +25,16 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{URL::to('image/uploads/1.jpg')}}" alt="First slide">
+                            <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/1.jpg')}}"
+                                 alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{URL::to('image/uploads/2.jpg')}}" alt="Second slide">
+                            <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/2.jpg')}}"
+                                 alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="{{URL::to('image/uploads/3.jpg')}}" alt="Third slide">
+                            <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/3.jpg')}}"
+                                 alt="Third slide">
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                            data-slide="prev">
@@ -52,7 +56,7 @@
                 <path d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"></path>
                 <defs>
                     <linearGradient id="MyGradient1">
-                        <stop offset="20%" stop-color="#4295df"></stop>
+                        <stop offset="20%" stop-color="#33cccc"></stop>
                         <stop offset="95%" stop-color="#fff"></stop>
                     </linearGradient>
                 </defs>
@@ -78,27 +82,31 @@
     <div class="mid-body">
         <div class="container">
             <div class="text-center p-4">
-                <button type="button" class="btn btn-secondary" onclick="javascript:window.location.href='Gallery'">
+                <button type="button" class="btn btn-secondary"
+                        onclick="javascript:window.location.href='Gallery/Image'">
                     <i class="fa fa-camera-retro fa-lg"></i> Gallery
                 </button>
             </div>
             <div class="row pb-3">
-                @for($i = 0; $i<8;$i++)
+                <?php $i = 0;?>
+                @foreach($images as $image)
                     <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in-up" data-aos-duration="2000">
-                        <a href="/Details/Image/{{$i}}">
+                        <a href="/Details/Gallery/{{$image->id}}">
                             <div id="fadeContent{{$i}}">
-                                <img class="p-3" id="fadeImage{{$i}}" src="{{URL::to('image/blank.png')}}"
+                                <?php $featured_image = DB::table('images_references')->where('image_id', '=', $image->id)->first();
+                                $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
+                                <img class="p-3 home-gallery" id="fadeImage{{$i}}"
+                                     src="{{URL::to('image/uploads/gallery/'.$f_img)}}"
                                      width="100%" alt="no image">
                                 <div class="fadeTitle" id="fadeTitle{{$i}}">
-                                    <h3>&nbsp;&nbsp;&nbsp;TITLE {{$i}}</h3>
-                                    <p>{{str_limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium
-                                    excepturi iure obcaecati possimus sunt suscipit velit veniam? Amet debitis eius enim
-                                    itaque iusto quia quos reprehenderit, sequi tempora veritatis voluptatibus!',50)}} </p>
+                                    <h3>&nbsp;&nbsp;&nbsp;{{strtoupper($image->title)}}</h3>
+                                    <p><?php echo str_limit(htmlspecialchars_decode($image->details), 50)?></p>
                                 </div>
                             </div>
                         </a>
                     </div>
-                @endfor
+                    <?php $i++;?>
+                @endforeach
             </div>
         </div>
     </div>

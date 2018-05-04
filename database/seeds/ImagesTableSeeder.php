@@ -14,7 +14,7 @@ class ImagesTableSeeder extends Seeder
 
         $faker = Faker\Factory::create();
 
-        $limit = 30;
+        $limit = 15;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('images')->insert([ //,

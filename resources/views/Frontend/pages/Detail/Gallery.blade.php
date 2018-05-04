@@ -12,20 +12,16 @@
                 <h3 class="text-center">{{$detail[0]->title}}</h3>
                 <br>
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-md-4">
                         <br>
                         <h5>Description :</h5>
                         <p><?php echo htmlspecialchars_decode($detail[0]->details)?></p>
                     </div>
-                </div>
-                <div class="row">
-                    @foreach($images as $image)
-                        <div class="col-lg-3 col-md-4 col-sm-6 fade-event" style="position: relative">
-                            <img src="{{URL::to('image/uploads/gallery/'.$image->image_name.'.jpg   ')}}" alt="photos"
-                                 class="custom-gallery custom-image-view">
-                            <i class="text-center">TITLE {{$image->image_id}}</i>
-                        </div>
-                    @endforeach
+                    <div class="col-md-8 p-2">
+                        <?php $featured_image = DB::table('images_references')->where('image_id', '=', $detail[0]->id)->first();
+                        $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
+                        <img src="{{URL::to('image/uploads/gallery/'.$f_img)}}" alt="No photo available">
+                    </div>
                 </div>
             @else
                 <h5>No image found.</h5>

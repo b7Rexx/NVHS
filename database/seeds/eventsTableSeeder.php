@@ -20,7 +20,7 @@ class eventsTableSeeder extends Seeder
             DB::table('events')->insert([ //,
                 'title' => $faker->name,
                 'location' => $faker->address,
-                'image' => '1524898001_.jpg',
+                'image' => 'test.jpg',
                 'details'=>$faker->text(200),
                 'starting_date'=>$faker->date(),
                 'ending_date'=>$faker->date()

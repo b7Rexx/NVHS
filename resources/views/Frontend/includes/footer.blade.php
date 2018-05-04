@@ -8,7 +8,8 @@
                 <br><h4>Fast Links</h4>
                 <a href="{{route('home')}}">Home</a><br>
                 <a href="{{route('event')}}">Events</a><br>
-                <a href="/Gallery/Image">Gallery</a>
+                <a href="/Gallery/Image">Images</a><br>
+                <a href="/Gallery/Video">Videos</a>
             </div>
             <div class="col-md-3 col-sm-5">
                 <br><h4>Company</h4>
@@ -18,9 +19,13 @@
                 <br><a href="/Company/Restaurant-Management">Restaurant Management</a>
             </div>
             <div class="col-md-5 col-sm-12"><br>
-                <h2 class="text-center">
-                    FBOOK SHARE LINK
-                </h2>
+                <div class="fb-page" data-href="https://www.facebook.com/NVHS012/" data-width="280" data-height="200"
+                     data-small-header="false" data-adapt-container-width="true" data-hide-cover="false"
+                     data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/NVHS012/" class="fb-xfbml-parse-ignore"><a
+                                href="https://www.facebook.com/NVHS012/">Nepal Vocational hospitality services</a>
+                    </blockquote>
+                </div>
             </div>
         </div>
     </div>

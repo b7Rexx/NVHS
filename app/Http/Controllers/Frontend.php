@@ -7,6 +7,7 @@ use App\image;
 use App\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class Frontend extends Controller
 {
@@ -17,7 +18,8 @@ class Frontend extends Controller
     //
     public function index()
     {
-        return view($this->_path . 'home');
+        $this->_data['images'] = image::all()->sortByDesc('id   ')->take(8);
+        return view($this->_path . 'home', $this->_data);
     }
 
     public function Event()
@@ -48,7 +50,7 @@ class Frontend extends Controller
 
         //related videos in frontend
         $this->_data['related_videos'] = video::select('id', 'title', 'details', 'video_name')->get()->take(7);
-           return view($this->_path . 'Detail/Video', $this->_data);
+        return view($this->_path . 'Detail/Video', $this->_data);
     }
 
     public function Gallery($type)
@@ -102,4 +104,19 @@ class Frontend extends Controller
         $this->_data['slugInfo'] = $slug;
         return view($this->_path . 'Company/company', $this->_data);
     }
+
+
+    public function send(Request $request)
+    {
+        $email = $request->email;
+        $name = $request->name;
+        $title = $request->title;
+        $content = $request->body;
+
+
+        return redirect()->back()->with('success', 'Mail sent');
+    }
 }
+
+
+

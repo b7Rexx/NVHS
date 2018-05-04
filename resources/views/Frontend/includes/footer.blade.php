@@ -8,7 +8,8 @@
                 <br><h4>Fast Links</h4>
                 <a href="{{route('home')}}">Home</a><br>
                 <a href="{{route('event')}}">Events</a><br>
-                <a href="/Gallery/Image">Gallery</a>
+                <a href="/Gallery/Image">Images</a><br>
+                <a href="/Gallery/Video">Videos</a>
             </div>
             <div class="col-md-3 col-sm-5">
                 <br><h4>Company</h4>

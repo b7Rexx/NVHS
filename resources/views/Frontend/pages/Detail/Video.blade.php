@@ -53,7 +53,7 @@
                             @endforelse
                         </div>
                     </div>
-                </div>
+                </div><br>
             @else
                 <h5>No video found.</h5>
                 <h5>Go to <a href="/Gallery/Video" style="color: whitesmoke">videos</a> to view list</h5>

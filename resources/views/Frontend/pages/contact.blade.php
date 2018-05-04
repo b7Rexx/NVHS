@@ -8,7 +8,7 @@
     <div class="contact_block">
         <div class="container">
             <br>
-            <h1 class="text-center">Conatct Us</h1>
+            <h1 class="text-center">Contact Us</h1>
             <hr>
             <div class="row">
                 <div class="col-md-6">
@@ -31,7 +31,7 @@
                         <input type="email" class="form-control" name="email">
                         <label> Your Name : </label>
                         <input type="text" class="form-control" name="name">
-                        <label> Title : </label>
+                        <label> Subject : </label>
                         <input type="text" class="form-control" name="title">
                         <label>Contents : </label>
                         <textarea class="form-control" rows="5" style="resize: none" name="body"></textarea>

@@ -18,7 +18,9 @@
                         <p><?php echo htmlspecialchars_decode($detail[0]->details)?></p>
                     </div>
                     <div class="col-md-8 p-2">
-                        <img src="{{URL::to('image/uploads/gallery/'.$images[0]->image_name)}}" alt="photos">
+                        <?php $featured_image = DB::table('images_references')->where('image_id', '=', $detail[0]->id)->first();
+                        $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
+                        <img src="{{URL::to('image/uploads/gallery/'.$f_img)}}" alt="No photo available">
                     </div>
                 </div>
             @else

@@ -18,8 +18,8 @@ class imageReferencesTableSeeder extends Seeder
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('images_references')->insert([ //,
-                'image_id' => $faker->randomNumber(1),
-                'image_name' => $faker->randomNumber(1)
+                'image_id' => $faker->numberBetween(0, 14),
+                'image_name' => $faker->numberBetween(1, 5) . ".jpg"
             ]);
         }
     }

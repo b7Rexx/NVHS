@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\admin;
 use App\event;
 use App\image;
 use App\image_ref;
@@ -18,6 +19,31 @@ class Backend extends Controller
     public function index()
     {
         return view($this->_path . 'home');
+    }
+    public function login(){
+        return view($this->_path.'admins.login');
+    }
+    public function addAdmin(){
+        return view($this->_path.'admins.add-admin');
+    }
+
+    public function addAdminAction(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email|unique:admins,email',
+            'password' => 'required|min:6|confirmed',
+            'name' => 'required'
+        ]);
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = bcrypt($request->password);
+
+        if (Admin::create($data)) {
+            return redirect()->back()->with('success', 'Admin was added.');
+        }
+
+        return redirect()->back()->with('fail', 'There was some problem');
     }
 
     public function addEvent()

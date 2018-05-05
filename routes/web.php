@@ -30,6 +30,9 @@ Route::post('/send-mail', 'Frontend@send')->name('send-mail');
 /**************Backend Routes**************/
 Route::group(['prefix' => '@admin@'], function () {
     Route::get('/', 'Backend@index')->name('admin-dashboard');
+    Route::get('/login','Backend@login')->name('admin-login');
+    Route::get('/add-admin','Backend@addAdmin')->name('add-admin');
+    Route::post('/add-admin','Backend@addAdminAction');
     Route::get('/add-event', 'Backend@addEvent')->name('add-event');
     Route::post('/add-event', 'Backend@addEventAction');
     Route::get('/view-event', 'Backend@viewEvent')->name('view-event');

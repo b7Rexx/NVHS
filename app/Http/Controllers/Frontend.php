@@ -114,10 +114,9 @@ class Frontend extends Controller
         $content = $request->body;
 
 
-        Mail::send('Frontend.pages.contact', ['title' => $title, 'content' => $content], function ($message) use ($name, $email, $title) {
+        Mail::send('Frontend.pages.email', ['name' => $name, 'email' => $email, 'title' => $title, 'content' => $content], function ($message) use ($name, $email, $title) {
             $message->from($email, $name);
             $message->to(config('mail.username'));
-            $message->replyTo($email);
             $message->subject($title);
         });
         return redirect()->back()->with('success', 'Mail sent');

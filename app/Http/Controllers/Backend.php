@@ -142,7 +142,7 @@ class Backend extends Controller
                     image_ref::create($ref_data);
                 }
 
-                return redirect()->route('add-image')->with('success', 'Image uploaded successfully');
+                return redirect()->route('view-image')->with('success', 'Image uploaded successfully');
             }
 
         }
@@ -163,24 +163,18 @@ class Backend extends Controller
 
     public function deleteImage($id)
     {
+
         $id = (int)$id;
         $image = image::findOrFail($id);
-        $image_name=image_ref::where(['image_id' => $id]);
-        foreach ($image_name as $img){
-            print_r($img);
-        }
-        die;
-        if (image::where(['id' => $id])->delete() && image_ref::where(['image_id' => $id])->delete()) {
-            foreach (image_ref::where(['image_id' => $id]) as $img_ref) {
-                dd($img_ref);
-                if (file_exists(public_path('image/uploads/gallery/' . $img_ref->image_name))) {
-                    unlink(public_path('image/uploads/gallery/' . $img_ref->image_name));
-                    echo $img_ref->image_name;
-                    die;
-                }
+        $images_name = image_ref::select('image_name')->where(['image_id' => $id])->get();
+        foreach ($images_name as $img_name) {
+            if (file_exists(public_path('image/uploads/gallery/' . $img_name->image_name))) {
+                unlink(public_path('image/uploads/gallery/' . $img_name->image_name));
             }
-            return redirect()->back()->with('success', 'Image was deleted ');
         }
+        if ((image_ref::where(['image_id' => $id])->delete()) && (image::where(['id' => $id])->delete())){
+        return redirect()->back()->with('success', 'Image was deleted ');
+    }
         return redirect()->back()->with('fail', 'Problem encountered while deleting image');
     }
 

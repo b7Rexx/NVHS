@@ -38,9 +38,9 @@
                                  data-aos="fade-left" data-aos-duration="1500">
                                 <h3>{{str_limit($image->title,15)}}</h3>
                                 <a href="/Details/Gallery/{{$image->id}}">
-                                <?php $featured_image = DB::table('images_references')->where('image_id', '=', $image->id)->first();
+                                <?php $featured_image = App\image_ref::select('id','image_id','image_name')->where('image_id', '=', $image->id)->first();
                                 $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
-                                <img src="{{URL::to('image/uploads/gallery/'.$f_img )}}"
+                                <img class="hover-image" src="{{URL::to('image/uploads/gallery/'.$f_img )}}"
                                      alt="No image">
                                 <br>
                                 {{--<a href="/Details/Gallery/{{$image->id}}"><br>...Details... </a>--}}

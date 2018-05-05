@@ -88,12 +88,12 @@
                 </button>
             </div>
             <div class="row pb-3">
-                <?php $i = 0;?>
+                <?php use App\image_ref;$i = 0;?>
                 @foreach($images as $image)
                     <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in-up" data-aos-duration="2000">
                         <a href="/Details/Gallery/{{$image->id}}">
                             <div id="fadeContent{{$i}}">
-                                <?php $featured_image = DB::table('images_references')->where('image_id', '=', $image->id)->first();
+                                <?php $featured_image = image_ref::select('id','image_id','image_name')->where('image_id', '=', $image->id)->first();
                                 $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
                                 <img class="p-3 home-gallery" id="fadeImage{{$i}}"
                                      src="{{URL::to('image/uploads/gallery/'.$f_img)}}"

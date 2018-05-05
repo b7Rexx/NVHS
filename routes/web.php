@@ -39,6 +39,8 @@ Route::group(['prefix' => '@admin@'], function () {
     Route::get('/add-image', 'Backend@addImage')->name('add-image');
     Route::post('/add-image', 'Backend@addImageAction');
     Route::get('/view-image', 'Backend@viewImage')->name('view-image');
+    Route::get('/update-image/{id}', 'Backend@updateImage')->name('update-image')->where(['id' => '[0-9]+']);
+    Route::get('/delete-image/{id}', 'Backend@deleteImage')->name('delete-image');
     Route::get('/add-video', 'Backend@addVideo')->name('add-video');
     Route::post('/add-video', 'Backend@addVideoAction');
     Route::get('/view-video', 'Backend@viewVideo')->name('view-video');

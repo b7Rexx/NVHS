@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\event;
 use App\image;
+use App\image_ref;
 use App\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,7 +56,7 @@ class Backend extends Controller
 
     public function viewEvent()
     {
-        $this->_data['events'] = event::orderBy('id','DESC')->paginate(10);
+        $this->_data['events'] = event::orderBy('id', 'DESC')->paginate(10);
         return view($this->_path . 'events.view-event', $this->_data);
     }
 
@@ -136,9 +137,9 @@ class Backend extends Controller
                     $extension = strtolower($file->extension());
                     $newName = str_random(10) . '_.' . $extension;
                     $file->move(public_path('image/uploads/gallery'), $newName);
-                    $ref_data['image_id']=$imgId;
-                    $ref_data['image_name']=$newName;
-                    DB::table('images_references')->insert($ref_data);
+                    $ref_data['image_id'] = $imgId;
+                    $ref_data['image_name'] = $newName;
+                    image_ref::create($ref_data);
                 }
 
                 return redirect()->route('add-image')->with('success', 'Image uploaded successfully');
@@ -153,6 +154,36 @@ class Backend extends Controller
         $this->_data['images'] = image::all();
         return view($this->_path . 'images.view-image', $this->_data);
     }
+
+    function updateImage($id)
+    {
+        $this->_data['images'] = image::where(['id' => $id])->first();
+        return view($this->_path . 'videos.update-image', $this->_data);
+    }
+
+    public function deleteImage($id)
+    {
+        $id = (int)$id;
+        $image = image::findOrFail($id);
+        $image_name=image_ref::where(['image_id' => $id]);
+        foreach ($image_name as $img){
+            print_r($img);
+        }
+        die;
+        if (image::where(['id' => $id])->delete() && image_ref::where(['image_id' => $id])->delete()) {
+            foreach (image_ref::where(['image_id' => $id]) as $img_ref) {
+                dd($img_ref);
+                if (file_exists(public_path('image/uploads/gallery/' . $img_ref->image_name))) {
+                    unlink(public_path('image/uploads/gallery/' . $img_ref->image_name));
+                    echo $img_ref->image_name;
+                    die;
+                }
+            }
+            return redirect()->back()->with('success', 'Image was deleted ');
+        }
+        return redirect()->back()->with('fail', 'Problem encountered while deleting image');
+    }
+
 
     public
     function addVideo()
@@ -182,7 +213,7 @@ class Backend extends Controller
 
     public function viewVideo()
     {
-        $this->_data['videos'] = video::orderBy('id','DESC')->paginate(5);
+        $this->_data['videos'] = video::orderBy('id', 'DESC')->paginate(5);
         return view($this->_path . 'videos.view-video', $this->_data);
     }
 
@@ -214,8 +245,7 @@ class Backend extends Controller
     }
 
 
-    public
-    function deleteVideo($id)
+    public function deleteVideo($id)
     {
         $id = (int)$id;
         $video = video::findOrFail($id);

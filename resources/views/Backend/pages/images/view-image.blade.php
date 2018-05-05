@@ -18,8 +18,8 @@
                         <tr>
                             <th>#</th>
                             <th width="15%">Title</th>
-                            <th>Featured Image</th>
-                            <th>Number of Images</th>
+                            <th width="15%">Featured Image</th>
+                            <th width="15%">Number of Images</th>
                             <th width="'40%">Details</th>
                             <th width="10%">Action</th>
                         </tr>
@@ -30,21 +30,23 @@
                                 <td>{{++$key}}</td>
                                 <td>{{$image->title}}</td>
                                 <td>
+                                    <img height="30" src="{{URL::to('image/uploads/gallery/'.$image->imageReference->first()->image_name)}}">
                                 </td>
+                                <td>{{count($image->imageReference)}}</td>
                                 <td>
                                     <?php echo str_limit($image->details = htmlspecialchars_decode($image->details), 100)?>
                                 </td>
                                 <td>
-                                    {{--<a href="{{route('update-video',['id'=>$image->id])}}"--}}
-                                       {{--class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>--}}
-                                    {{--<a href="{{route('delete-video',['id'=>$image->id])}}"--}}
-                                       {{--class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>--}}
+                                    <a href="{{route('update-image',['id'=>$image->id])}}"
+                                       class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
+                                    <a href="{{route('delete-image',['id'=>$image->id])}}"
+                                       class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
 
                         @empty
                             <tr>
-                                <td colspan="5">No image found. You can add one <u><a
+                                <td colspan="6">No image found. You can add one <u><a
                                                 href="{{route('add-image')}}">here</a></u></td>
                             </tr>
                         @endforelse

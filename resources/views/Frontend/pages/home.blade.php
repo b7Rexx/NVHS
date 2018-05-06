@@ -88,19 +88,23 @@
                 </button>
             </div>
             <div class="row pb-3">
-                <?php use App\image_ref;$i = 0;?>
-                @foreach($images as $image)
+                <?php use App\image;
+                $i = 0;?>
+                @foreach($images as $imgData)
+                    <?php
+                    $imgRef = image::select('id', 'title', 'details')->where('id', '=', $imgData->image_id)->get();
+                    $title = $imgRef[0]->title;
+                    $details = $imgRef[0]->details;
+                    ?>
                     <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in-up" data-aos-duration="2000">
-                        <a href="/Details/Gallery/{{$image->id}}">
+                        <a href="/Details/Gallery/{{$imgData->image_id}}">
                             <div id="fadeContent{{$i}}">
-                                <?php $featured_image = image_ref::select('id','image_id','image_name')->where('image_id', '=', $image->id)->first();
-                                $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
                                 <img class="p-3 home-gallery" id="fadeImage{{$i}}"
-                                     src="{{URL::to('image/uploads/gallery/'.$f_img)}}"
+                                     src="{{URL::to('image/uploads/gallery/'.$imgData->image_name)}}"
                                      width="100%" alt="no image">
                                 <div class="fadeTitle" id="fadeTitle{{$i}}">
-                                    <h3>&nbsp;&nbsp;&nbsp;{{strtoupper($image->title)}}</h3>
-                                    <p><?php echo str_limit(htmlspecialchars_decode($image->details), 50)?></p>
+                                    <h3>&nbsp;&nbsp;&nbsp;{{strtoupper($title)}}</h3>
+                                    <p><?php echo strip_tags(str_limit(htmlspecialchars_decode($details), 50))?></p>
                                 </div>
                             </div>
                         </a>
@@ -108,6 +112,8 @@
                     <?php $i++;?>
                 @endforeach
             </div>
+
+
         </div>
     </div>
 @endsection

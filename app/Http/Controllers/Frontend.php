@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\event;
 use App\image;
+use App\image_ref;
 use App\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,13 +13,12 @@ use Illuminate\Support\Facades\Mail;
 class Frontend extends Controller
 {
     private $_data = [];
-
     private $_path = 'Frontend.pages.';
 
     //
     public function index()
     {
-        $this->_data['images'] = image::all()->sortByDesc('id   ')->take(8);
+        $this->_data['images'] = image_ref::inRandomOrder()->get()->take(8);
         return view($this->_path . 'home', $this->_data);
     }
 
@@ -67,7 +67,7 @@ class Frontend extends Controller
     public function DetailGallery($slug)
     {
         $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->get();
-        $this->_data['images'] = DB::table('images_references')->where('image_id', '=', $slug)->get();
+        $this->_data['images'] = image_ref::select('id','image_name')->where('image_id', '=', $slug)->get();
         return view($this->_path . 'Detail/Gallery', $this->_data);
     }
 

@@ -30,7 +30,7 @@
                                 <td>{{++$key}}</td>
                                 <td>{{$image->title}}</td>
                                 <td>
-                                    <img height="30" src="{{URL::to('image/uploads/gallery/'.$image->imageReference->first()->image_name)}}">
+                                    <img height="30" src="{{URL::to('image/uploads/gallery/'.$image->imageReference ->first()->image_name)}}">
                                 </td>
                                 <td>{{count($image->imageReference)}}</td>
                                 <td>

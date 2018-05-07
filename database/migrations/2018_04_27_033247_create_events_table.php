@@ -21,6 +21,7 @@ class CreateEventsTable extends Migration
             $table->string('location');
             $table->string('image');
             $table->text('details');
+            $table->integer('image_id')->nullable();
             $table->timestamps();
         });
     }

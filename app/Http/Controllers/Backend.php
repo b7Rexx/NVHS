@@ -20,11 +20,15 @@ class Backend extends Controller
     {
         return view($this->_path . 'home');
     }
-    public function login(){
-        return view($this->_path.'admins.login');
+
+    public function login()
+    {
+        return view($this->_path . 'admins.login');
     }
-    public function addAdmin(){
-        return view($this->_path.'admins.add-admin');
+
+    public function addAdmin()
+    {
+        return view($this->_path . 'admins.add-admin');
     }
 
     public function addAdminAction(Request $request)
@@ -48,7 +52,8 @@ class Backend extends Controller
 
     public function addEvent()
     {
-        return view($this->_path . 'events.add-event');
+        $this->_data['images'] = image::all();
+        return view($this->_path . 'events.add-event', $this->_data);
     }
 
     public function addEventAction(Request $request)
@@ -74,6 +79,9 @@ class Backend extends Controller
         $data['starting_date'] = $request->starting_date;
         $data['ending_date'] = $request->ending_date;
         $data['details'] = htmlspecialchars($request->details);
+        if (!$request->gallery) {
+            $data['image_id'] = $request->gallery;
+        }
         if (event::create($data)) {
             return redirect()->route('view-event')->with('success', 'Event added successfully');
         }
@@ -89,6 +97,11 @@ class Backend extends Controller
     public function updateEvent($id)
     {
         $this->_data['event'] = event::where(['id' => $id])->first();
+
+        //for gallery image link with events
+        $gallery_id = (event::where(['id' => $id])->first())->image_id;
+        $this->_data['gallery'] = image::select('id', 'title')->where('id', '=', $gallery_id)->get();
+        $this->_data['images'] = image::all();
         return view($this->_path . 'events.update-event', $this->_data);
     }
 
@@ -106,6 +119,11 @@ class Backend extends Controller
         $data['starting_date'] = $request->starting_date;
         $data['ending_date'] = $request->ending_date;
         $data['details'] = htmlspecialchars($request->details);
+
+        if (!$request->gallery == 0) {
+            $data['image_id'] = $request->gallery;
+        }
+
         if ($request->hasFile('image')) {
             $id = (int)$id;
             $event = event::findOrFail($id);
@@ -198,9 +216,9 @@ class Backend extends Controller
                 unlink(public_path('image/uploads/gallery/' . $img_name->image_name));
             }
         }
-        if ((image_ref::where(['image_id' => $id])->delete()) && (image::where(['id' => $id])->delete())){
-        return redirect()->back()->with('success', 'Image was deleted ');
-    }
+        if ((image_ref::where(['image_id' => $id])->delete()) && (image::where(['id' => $id])->delete())) {
+            return redirect()->back()->with('success', 'Image was deleted ');
+        }
         return redirect()->back()->with('fail', 'Problem encountered while deleting image');
     }
 

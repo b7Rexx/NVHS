@@ -12,6 +12,7 @@ class event extends Model
         'ending_date',
         'location',
         'image',
-        'details'
+        'details',
+        'image_id'
     ];
 }

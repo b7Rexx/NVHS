@@ -32,8 +32,11 @@ class Frontend extends Controller
     public function DetailEvent($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date')->where('id', '=', $slug)->get();
+        $this->_data['detail'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date','image_id')->where('id', '=', $slug)->get();
         $this->_data['images'] = image_ref::inRandomOrder()->get()->take(8);
+        $gallery_id = (event::where(['id' => $slug])->first())->image_id;
+        $this->_data['galleryImages'] =image_ref::select('id','image_name')->where('image_id', '=', $gallery_id)->get();
+
         return view($this->_path . 'Detail/Event', $this->_data);
     }
 

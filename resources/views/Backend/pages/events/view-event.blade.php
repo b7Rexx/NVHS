@@ -23,6 +23,7 @@
                             <th>Ending Date</th>
                             <th>Image</th>
                             <th width="'20%">details</th>
+                            <th>gallery ID</th>
                             <th width="10%">Action</th>
                         </tr>
                         </thead>
@@ -37,7 +38,10 @@
                                 <td><img height="30" src="{{URL::to('image/uploads/events/'.$event->image)}}" alt="">
                                 </td>
                                 <td>
-                                    <?php echo str_limit($event->details = htmlspecialchars_decode($event->details),100)?>
+                                    <?php echo str_limit($event->details = htmlspecialchars_decode($event->details), 100)?>
+                                </td>
+                                <td>
+                                    {{$event->image_id}}
                                 </td>
                                 <td>
                                     <a href="{{route('update-event',['id'=>$event->id])}}"

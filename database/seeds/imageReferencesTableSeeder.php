@@ -14,12 +14,12 @@ class imageReferencesTableSeeder extends Seeder
         //
         $faker = Faker\Factory::create();
 
-        $limit = 50;
+        $limit = 20;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('images_references')->insert([ //,
-                'image_id' => $faker->numberBetween(0, 14),
-                'image_name' => $faker->numberBetween(1, 5) . ".jpg"
+                'image_id' => $faker->numberBetween(1, 5),
+                'image_name' => $faker->numberBetween(1, 2) . ".jpg"
             ]);
         }
     }

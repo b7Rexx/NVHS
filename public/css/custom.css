@@ -102,6 +102,10 @@ h {
     transition: transform 2s ease;
 }
 
+.event-home{
+    background: url("../image/back_event.png") no-repeat center center/cover;
+}
+
 .wave1, .wave2 {
     margin-top: -2px;
     z-index: -1;
@@ -205,9 +209,13 @@ h {
     border: 5px white;
 }
 
-.event-image:hover {
+.event-image{
     background: url('../image/back_event.png') no-repeat center;
-    border-left: 10px outset transparent;
+
+}
+
+.event-image:hover{
+    background: url('../image/back_event_change.png') no-repeat center;
 }
 
 .event-image img {
@@ -215,16 +223,9 @@ h {
     max-height: 200px;
 }
 
-.event-image-detail {
-    margin-right: 50px;
-    margin-bottom: 20px;
-    max-width: 450px;
-    border: 5px white;
-}
-
 .event-image-detail img {
     width: 240px;
-    max-height: 200px;
+    max-height: 240px;
 }
 
 .event_block h4 {

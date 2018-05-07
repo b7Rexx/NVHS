@@ -19,6 +19,7 @@ class Frontend extends Controller
     public function index()
     {
         $this->_data['images'] = image_ref::inRandomOrder()->get()->take(8);
+        $this->_data['event'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date')->orderbyDESC('id')->get()->take(1);
         return view($this->_path . 'home', $this->_data);
     }
 
@@ -32,6 +33,7 @@ class Frontend extends Controller
     {
         $this->_data['slugInfo'] = $slug;
         $this->_data['detail'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date')->where('id', '=', $slug)->get();
+        $this->_data['images'] = image_ref::inRandomOrder()->get()->take(8);
         return view($this->_path . 'Detail/Event', $this->_data);
     }
 

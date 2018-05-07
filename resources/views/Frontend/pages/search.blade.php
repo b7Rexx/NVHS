@@ -87,7 +87,7 @@
                         <h4>Images</h4>
                         <hr>
                         @forelse($Image as $list2)
-                            <a href="Details/Image/{{$list2->id}}"><h3>{{$list2->title}}</h3></a>
+                            <a href="Details/Gallery/{{$list2->id}}"><h3>{{$list2->title}}</h3></a>
                             <?php echo strip_tags(str_limit(htmlspecialchars_decode($list2->details), 150, '...'))?>
                             <br><br>
                         @empty

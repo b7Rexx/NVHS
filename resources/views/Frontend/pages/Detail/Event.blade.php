@@ -31,7 +31,7 @@
                 <hr>
                 <div class="text-center p-4">
                     <button type="button" class="btn btn-secondary"
-                            onclick="javascript:window.location.href='Gallery/Image'">
+                            onclick="javascript:window.location.href='//nvhs.com/Gallery/Image'">
                         <i class="fa fa-camera-retro fa-lg"></i> Gallery
                     </button>
                 </div>

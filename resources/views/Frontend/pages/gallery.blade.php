@@ -56,7 +56,7 @@
                 @elseif($GalleryType == 'Video')
                     @forelse($videos as $video)
                         <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div title="{{$video->title}}" class="gallery_block" data-title="gallery"
+                            <div title="{{$video->title}}" class="gallery_block gallery_video_block" data-title="gallery"
                                  data-aos="fade-left" data-aos-duration="1500">
                                 <a href="/Details/Video/{{$video->id}}">
                                     <h3>{{str_limit($video->title,15)}}</h3>

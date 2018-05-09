@@ -171,8 +171,13 @@ h {
     border-radius: 25px;
 }
 
+.gallery_video_block:hover{
+    background: linear-gradient(#272E4F,#2C365D,#FF5E3A,#F2F2F0);
+}
+
 @media (min-width: 400px) {
     .gallery_block:hover .hover-image {
+        border:4px solid grey;
         border-radius: 0;
         width: 400px;
         height: 400px;

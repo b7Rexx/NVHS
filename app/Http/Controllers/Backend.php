@@ -221,8 +221,22 @@ class Backend extends Controller
 
     function updateImage($id)
     {
-        $this->_data['images'] = image::where(['id' => $id])->first();
-        return view($this->_path . 'videos.update-image', $this->_data);
+        $this->_data['image'] = image::where(['id' => $id])->first();
+        return view($this->_path . 'images.update-image', $this->_data);
+    }
+
+    public function updateImageAction(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+        $data['title'] = $request->title;
+        $data['details'] = $request->description;
+        if (image::where(['id' => $id])->update($data)) {
+            return redirect()->route('view-image')->with('success', 'Image details updated successfully');
+        }
+        return redirect()->back()->with('fail', 'Problem encountered while updating iamge details');
     }
 
     public function deleteImage($id)

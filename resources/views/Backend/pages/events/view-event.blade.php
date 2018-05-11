@@ -47,7 +47,7 @@
                                     <a href="{{route('update-event',['id'=>$event->id])}}"
                                        class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
                                     <a href="{{route('delete-event',['id'=>$event->id])}}"
-                                       class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                       class="btn btn-danger btn-xs"><i class="fa fa-trash" onclick="return confirm('Are you sure?')"></i></a>
                                 </td>
                             </tr>
 

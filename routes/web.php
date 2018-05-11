@@ -48,6 +48,7 @@ Route::group(['prefix' => '@admin@','middleware' =>'auth:admin'], function () {
     Route::post('/add-image', 'Backend@addImageAction');
     Route::get('/view-image', 'Backend@viewImage')->name('view-image');
     Route::get('/update-image/{id}', 'Backend@updateImage')->name('update-image')->where(['id' => '[0-9]+']);
+    Route::post('/update-image/{id}', 'Backend@updateImageAction')->where(['id' => '[0-9]+']);
     Route::get('/delete-image/{id}', 'Backend@deleteImage')->name('delete-image');
     Route::get('/add-video', 'Backend@addVideo')->name('add-video');
     Route::post('/add-video', 'Backend@addVideoAction');

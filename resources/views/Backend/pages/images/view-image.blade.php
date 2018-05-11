@@ -40,7 +40,7 @@
                                     <a href="{{route('update-image',['id'=>$image->id])}}"
                                        class="btn btn-default btn-xs"><i class="fa fa-edit"></i></a>
                                     <a href="{{route('delete-image',['id'=>$image->id])}}"
-                                       class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                       class="btn btn-danger btn-xs"><i class="fa fa-trash" onclick="return confirm('Are you sure?')"></i></a>
                                 </td>
                             </tr>
 

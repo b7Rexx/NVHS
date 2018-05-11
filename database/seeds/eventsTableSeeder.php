@@ -14,7 +14,7 @@ class eventsTableSeeder extends Seeder
         //
         $faker = Faker\Factory::create();
 
-        $limit = 30;
+        $limit = 10;
 
         for ($i = 0; $i < $limit; $i++) {
             DB::table('events')->insert([ //,
@@ -23,6 +23,7 @@ class eventsTableSeeder extends Seeder
                 'image' => 'test.jpg',
                 'details'=>$faker->text(200),
                 'starting_date'=>$faker->date(),
+                'image_id'=>$faker->numberBetween(1,5),
                 'ending_date'=>$faker->date()
             ]);
         }

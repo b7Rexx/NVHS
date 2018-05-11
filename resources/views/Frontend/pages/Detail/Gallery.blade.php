@@ -9,19 +9,21 @@
         <div class="container">
             <br>
             @if(!empty($detail[0]))
-                <h3 class="text-center">{{$detail[0]->title}}</h3>
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <br>
-                        <h5>Description :</h5>
-                        <p><?php echo htmlspecialchars_decode($detail[0]->details)?></p>
+                        <h3 class="text-center">{{ucfirst($detail[0]->title)}}</h3>
                     </div>
-                    <div class="col-md-8 p-2">
-                        <?php $featured_image = DB::table('images_references')->where('image_id', '=', $detail[0]->id)->first();
-                        $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
-                        <img src="{{URL::to('image/uploads/gallery/'.$f_img)}}" alt="No photo available">
+                    <div class="col-md-8">
+                        <p>Description :<br><?php echo strip_tags(htmlspecialchars_decode($detail[0]->details))?></p>
                     </div>
+                </div>
+                <div class="row">
+                    @foreach($images as $imgData)
+                        <div class="col-md-6 col-lg-4 gallery_block">
+                            <img class="hover-image" src="{{URL::to('image/uploads/gallery/'.$imgData->image_name)}}" alt="photo">
+                        </div>
+                    @endforeach
                 </div>
             @else
                 <h5>No image found.</h5>

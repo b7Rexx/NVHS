@@ -15,37 +15,60 @@
                                 class="fa fa-quote-right"></i></h>
                 </div>
 
+                <div class="row">
+                    <div class="col-md-8 col-lg-8">
 
-                {{--Carousel Slider--}}
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/1.jpg')}}"
-                                 alt="First slide">
+                        {{--Carousel Slider--}}
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/1.jpg')}}"
+                                         alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/2.jpg')}}"
+                                         alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/3.jpg')}}"
+                                         alt="Third slide">
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                                   data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                                   data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/2.jpg')}}"
-                                 alt="Second slide">
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 event-home">
+                        <br>
+                        <p class="text-right">Latest Event</p>
+                        <div>
+                            <hr>
+                            <a href="/Details/Event/{{$event[0]->id}}">
+                                <img class="float-right" src="{{URL::to('image/uploads/events/'.$event[0]->image)}}" height="120px" width="120px"
+                                     alt="photo">
+                            </a>
+                            <br><br>
+                            <a href="/Details/Event/{{$event[0]->id}}"><h4>{{strtoupper($event[0]->title)}}</h4></a>
+                            <p><?php echo strip_tags(str_limit(htmlspecialchars_decode($event[0]->details), 50, '...'));?></p>
+                            Location : {{$event[0]->location}}<br><br>
+                            <t>Start :</t>{{explode(' ',$event[0]->starting_date)[0]}}<br>
+                            <t>End :</t>{{explode(' ',$event[0]->ending_date)[0]}}
+                            <hr>
                         </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="{{URL::to('image/uploads/carousel/3.jpg')}}"
-                                 alt="Third slide">
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                           data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                           data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -64,8 +87,8 @@
         </div>
         <div class="container">
             <div class="row p-5">
-                @for($i = 0; $i<6;$i++)
-                    <div class="col-md-4 col-sm-4">
+                @for($i = 0; $i<4;$i++)
+                    <div class="col-sm-6">
                         <div data-aos="fade-left" data-aos-duration="2500">
                             <h1>TITLE</h1>
                             <p class="text-justify">{{str_limit('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquid assumenda deleniti
@@ -88,19 +111,23 @@
                 </button>
             </div>
             <div class="row pb-3">
-                <?php use App\image_ref;$i = 0;?>
-                @foreach($images as $image)
+                <?php use App\image;
+                $i = 0;?>
+                @foreach($images as $imgData)
+                    <?php
+                    $imgRef = image::select('id', 'title', 'details')->where('id', '=', $imgData->image_id)->get();
+                    $title = $imgRef[0]->title;
+                    $details = $imgRef[0]->details;
+                    ?>
                     <div class="col-lg-3 col-md-4 col-sm-6" data-aos="zoom-in-up" data-aos-duration="2000">
-                        <a href="/Details/Gallery/{{$image->id}}">
+                        <a href="/Details/Gallery/{{$imgData->image_id}}">
                             <div id="fadeContent{{$i}}">
-                                <?php $featured_image = image_ref::select('id','image_id','image_name')->where('image_id', '=', $image->id)->first();
-                                $f_img = (isset($featured_image->image_name)) ? $featured_image->image_name : 'no_image';?>
                                 <img class="p-3 home-gallery" id="fadeImage{{$i}}"
-                                     src="{{URL::to('image/uploads/gallery/'.$f_img)}}"
+                                     src="{{URL::to('image/uploads/gallery/'.$imgData->image_name)}}"
                                      width="100%" alt="no image">
                                 <div class="fadeTitle" id="fadeTitle{{$i}}">
-                                    <h3>&nbsp;&nbsp;&nbsp;{{strtoupper($image->title)}}</h3>
-                                    <p><?php echo str_limit(htmlspecialchars_decode($image->details), 50)?></p>
+                                    <h3>&nbsp;&nbsp;&nbsp;{{strtoupper($title)}}</h3>
+                                    <p><?php echo strip_tags(str_limit(htmlspecialchars_decode($details), 50))?></p>
                                 </div>
                             </div>
                         </a>
@@ -108,6 +135,8 @@
                     <?php $i++;?>
                 @endforeach
             </div>
+
+
         </div>
     </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\event;
 use App\image;
+use App\image_ref;
 use App\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,13 +13,13 @@ use Illuminate\Support\Facades\Mail;
 class Frontend extends Controller
 {
     private $_data = [];
-
     private $_path = 'Frontend.pages.';
 
     //
     public function index()
     {
-        $this->_data['images'] = image::all()->sortByDesc('id   ')->take(8);
+        $this->_data['images'] = image_ref::inRandomOrder()->get()->take(8);
+        $this->_data['event'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date')->orderbyDESC('id')->get()->take(1);
         return view($this->_path . 'home', $this->_data);
     }
 
@@ -31,7 +32,11 @@ class Frontend extends Controller
     public function DetailEvent($slug)
     {
         $this->_data['slugInfo'] = $slug;
-        $this->_data['detail'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date')->where('id', '=', $slug)->get();
+        $this->_data['detail'] = event::select('id', 'title', 'image', 'details', 'location', 'starting_date', 'ending_date','image_id')->where('id', '=', $slug)->get();
+        $this->_data['images'] = image_ref::inRandomOrder()->get()->take(8);
+        $gallery_id = (event::where(['id' => $slug])->first())->image_id;
+        $this->_data['galleryImages'] =image_ref::select('id','image_name')->where('image_id', '=', $gallery_id)->get();
+
         return view($this->_path . 'Detail/Event', $this->_data);
     }
 
@@ -67,7 +72,7 @@ class Frontend extends Controller
     public function DetailGallery($slug)
     {
         $this->_data['detail'] = image::select('id', 'title', 'details')->where('id', '=', $slug)->get();
-        $this->_data['images'] = DB::table('images_references')->where('image_id', '=', $slug)->get();
+        $this->_data['images'] = image_ref::select('id','image_name')->where('image_id', '=', $slug)->get();
         return view($this->_path . 'Detail/Gallery', $this->_data);
     }
 

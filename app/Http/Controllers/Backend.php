@@ -28,6 +28,48 @@ class Backend extends Controller
     }
 
 
+    public function loginAction(Request $request){
+        $email = $request->email;
+        $password = $request->password;
+        $rememberMe = isset($request->remember_me);
+
+        if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password], $rememberMe)) {
+            return redirect()->intended(route('admin-dashboard'));
+        }
+
+        return redirect()->back()->with('fail', 'Invalid Email or Password Combination.');
+    }
+    public function logout(){
+        Auth::guard('admin')->logout();
+        return view($this->_path.'admins.login');
+    }
+    public function addAdmin()
+    {
+        return view($this->_path . 'admins.add-admin');
+    }
+
+
+    public function addAdminAction(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email|unique:admins,email',
+            'password' => 'required|min:6|confirmed',
+            'name' => 'required'
+        ]);
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['password'] = bcrypt($request->password);
+
+        if (Admin::create($data)) {
+            return redirect()->back()->with('success', 'Admin was added.');
+        }
+
+        return redirect()->back()->with('fail', 'There was some problem');
+    }
+
+
+
     public function addEvent()
     {
         $this->_data['images'] = image::all();

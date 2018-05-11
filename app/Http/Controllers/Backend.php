@@ -8,6 +8,7 @@ use App\image;
 use App\image_ref;
 use App\video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Backend extends Controller
@@ -21,6 +22,21 @@ class Backend extends Controller
         return view($this->_path . 'home');
     }
     public function login(){
+        return view($this->_path.'admins.login');
+    }
+    public function loginAction(Request $request){
+        $email = $request->email;
+        $password = $request->password;
+        $rememberMe = isset($request->remember_me);
+
+        if (Auth::guard('admin')->attempt(['email' => $email, 'password' => $password], $rememberMe)) {
+            return redirect()->intended(route('admin-dashboard'));
+        }
+
+        return redirect()->back()->with('fail', 'Invalid Email or Password Combination.');
+    }
+    public function logout(){
+        Auth::guard('admin')->logout();
         return view($this->_path.'admins.login');
     }
     public function addAdmin(){

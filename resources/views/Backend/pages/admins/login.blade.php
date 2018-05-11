@@ -20,9 +20,11 @@
 
 <body class="login">
 <div>
+
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
+                @include('Backend.includes.message')
                 <form method="post" action="{{route('admin-login')}}">
                     <h1>Login</h1>
                     {{csrf_field()}}

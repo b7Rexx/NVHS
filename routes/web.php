@@ -27,12 +27,17 @@ Route::get('/Contact', 'Frontend@Contact')->name('contact');
 //Send mail
 Route::post('/send-mail', 'Frontend@send')->name('send-mail');
 
+
+Route::get('@admin@/login','Backend@login')->name('admin-login');
+Route::post('@admin@/login','Backend@loginAction');
+Route::get('@admin@/add-admin','Backend@addAdmin')->name('add-admin');
+Route::post('@admin@/add-admin','Backend@addAdminAction');
 /**************Backend Routes**************/
-Route::group(['prefix' => '@admin@'], function () {
+Route::group(['prefix' => '@admin@','middleware' =>'auth:admin'], function () {
     Route::get('/', 'Backend@index')->name('admin-dashboard');
-    Route::get('/login','Backend@login')->name('admin-login');
-    Route::get('/add-admin','Backend@addAdmin')->name('add-admin');
-    Route::post('/add-admin','Backend@addAdminAction');
+
+
+    Route::get('/logout','Backend@logout')->name('admin-logout');
     Route::get('/add-event', 'Backend@addEvent')->name('add-event');
     Route::post('/add-event', 'Backend@addEventAction');
     Route::get('/view-event', 'Backend@viewEvent')->name('view-event');

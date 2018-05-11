@@ -48,7 +48,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="{{route('add-admin')}}"><i class="fa fa-user-plus"></i> Add Admin</a></li>
 
                 </ul>
             </div>

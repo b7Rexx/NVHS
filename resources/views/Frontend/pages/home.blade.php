@@ -57,16 +57,21 @@
                         <p class="text-right">Latest Event</p>
                         <div>
                             <hr>
-                            <a href="/Details/Event/{{$event[0]->id}}">
-                                <img class="float-right" src="{{URL::to('image/uploads/events/'.$event[0]->image)}}" height="120px" width="120px"
-                                     alt="photo">
-                            </a>
-                            <br><br>
-                            <a href="/Details/Event/{{$event[0]->id}}"><h4>{{strtoupper($event[0]->title)}}</h4></a>
-                            <p><?php echo strip_tags(str_limit(htmlspecialchars_decode($event[0]->details), 50, '...'));?></p>
-                            Location : {{$event[0]->location}}<br><br>
-                            <t>Start :</t>{{explode(' ',$event[0]->starting_date)[0]}}<br>
-                            <t>End :</t>{{explode(' ',$event[0]->ending_date)[0]}}
+                            @if(isset($event[0]))
+                                <a href="/Details/Event/{{$event[0]->id}}">
+                                    <img class="float-right" src="{{URL::to('image/uploads/events/'.$event[0]->image)}}"
+                                         height="120px" width="120px"
+                                         alt="photo">
+                                </a>
+                                <br><br>
+                                <a href="/Details/Event/{{$event[0]->id}}"><h4>{{strtoupper($event[0]->title)}}</h4></a>
+                                <p><?php echo strip_tags(str_limit(htmlspecialchars_decode($event[0]->details), 50, '...'));?></p>
+                                Location : {{$event[0]->location}}<br><br>
+                                <t>Start :</t>{{explode(' ',$event[0]->starting_date)[0]}}<br>
+                                <t>End :</t>{{explode(' ',$event[0]->ending_date)[0]}}
+                            @else
+                                <h5>No events.</h5>
+                            @endif
                             <hr>
                         </div>
                     </div>
